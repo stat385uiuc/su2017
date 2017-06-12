@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Course on STAT 385@UIUC SU2017</title>
-    <link>/tags/course/</link>
+    <link>/su2017/tags/course/</link>
     <description>Recent content in Course on STAT 385@UIUC SU2017</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 12 Jun 2017 01:13:14 -0500</lastBuildDate>
     
-	<atom:link href="/tags/course/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/su2017/tags/course/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Welcome to STAT 385 @ UIUC</title>
-      <link>/post/welcome-to-stat-385--uiuc/</link>
+      <link>/su2017/welcome-to-stat-385--uiuc/</link>
       <pubDate>Mon, 12 Jun 2017 01:13:14 -0500</pubDate>
       
-      <guid>/post/welcome-to-stat-385--uiuc/</guid>
+      <guid>/su2017/welcome-to-stat-385--uiuc/</guid>
       <description>WelcomeWelcome to STAT 385: Statistics Programming Methods at UIUC. The following will serve as our course website. Please excuse the dust as it becomes sea worthy.
 Course InformationLocation: Siebel 1105
 Time: Monday, Tuesday, and Thursday, 3:00 PM - 4:50 PM

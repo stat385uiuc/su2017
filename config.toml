@@ -9,7 +9,7 @@ disqusShortname = ""
 ignoreFiles = ["\\.Rmd$", "_files$", "_cache$"]
 
 [permalinks]
-    post = "/:section/:slug/"
+    post = "/:slug/"
 
 [[menu.main]]
     name = "Syllabus"

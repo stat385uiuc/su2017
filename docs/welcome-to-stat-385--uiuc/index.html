@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.21" />
+
+
+<title>Welcome to STAT 385 @ UIUC - STAT 385@UIUC SU2017</title>
+<meta property="og:title" content="Welcome to STAT 385 @ UIUC - STAT 385@UIUC SU2017">
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdn.bootcss.com/highlight.js/9.11.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="../su2017/css/fonts.css" media="all">
+<link rel="stylesheet" href="../su2017/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="../su2017/" class="nav-logo">
+    <img src="../su2017/images/logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="https://github.com/stat385uiuc/su2017">GitHub</a></li>
+    
+    <li><a href="../su2017/schedule/">Schedule</a></li>
+    
+    <li><a href="../su2017/syllabus/">Syllabus</a></li>
+    
+    <li><a href="https://twitter.com/axiomsofxyz">Twitter</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">1 min read</span>
+    
+
+    <h1 class="article-title">Welcome to STAT 385 @ UIUC</h1>
+
+    
+    <span class="article-date">2017/06/12</span>
+    
+
+    <div class="article-content">
+      <div id="welcome" class="section level1">
+<h1>Welcome</h1>
+<p>Welcome to STAT 385: Statistics Programming Methods at UIUC. The following will serve as our course website. Please excuse the dust as it becomes sea worthy.</p>
+</div>
+<div id="course-information" class="section level1">
+<h1>Course Information</h1>
+<p><strong>Location:</strong> <a href="http://ada.fs.illinois.edu/0563Plan1.gif">Siebel 1105</a></p>
+<p><strong>Time:</strong> Monday, Tuesday, and Thursday, 3:00 PM - 4:50 PM</p>
+<p><img src="../post/2017-06-12-welcome-to-stat385_files/figure-html/siebel_map-1.png" width="672" /></p>
+<p>Generated using:</p>
+<pre class="r"><code># Load ggplot2 mapping extension
+library(&quot;ggmap&quot;)
+
+# Capture Image from Google Maps
+siebel_map = get_map(location = c(lon = -88.224735, lat = 40.113800),
+                     color = &quot;color&quot;,
+                     source = &quot;google&quot;,
+                     maptype = &quot;satellite&quot;,
+                     zoom = 17)
+
+# Classroom location
+pt = data.frame(lat = 40.114080, lon = -88.225279)
+
+# Map away
+ggmap(siebel_map) + geom_point(data = pt, aes(x = lon, y = lat), 
+                               color = &quot;red&quot;, size = 5, alpha = 0.5) + 
+                    xlab(&quot;Longitude&quot;) + ylab(&quot;Latitude&quot;) +
+                    ggtitle(&quot;Siebel Center&quot;) </code></pre>
+</div>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="../su2017/index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
+          </li>
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="../su2017/images/hugo-logo.png" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/highlight.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/r.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+
+    
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-38501058-5', 'auto');
+ga('send', 'pageview');
+</script>
+
+  </body>
+</html>
+
