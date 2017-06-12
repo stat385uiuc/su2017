@@ -21,8 +21,8 @@ Note: All homework is due on **Sunday** at **11:59 PM CDT** by e-mail to
 
 # Week 1: Syllabus Week
 
-- **6/12/17 - M:** Course Introduction, Concepts of Reproducibility 
-- **6/13/17 - T:** Unix Shell and [GitHub](https://github.com/join)
+- **6/12/17 - M:** Course Introduction and Intro R 
+- **6/13/17 - T:** Unix Shell, [`git`](https://git-scm.com/doc) and [GitHub](https://github.com/join)
 - **6/15/17 - R:** Literate Programming to achieve a reproducible analysis using [`knitr`](http://yihui.name/knitr/), [`markdown`](https://daringfireball.net/projects/markdown/), [`rmarkdown`](http://rmarkdown.rstudio.com), [`git`](https://git-scm.com/doc)
 
 # Week 2: Welcome to R
@@ -38,7 +38,7 @@ Note: All homework is due on **Sunday** at **11:59 PM CDT** by e-mail to
 - **6/27/17 - T:** 
 - **6/29/17 - R:** 
   
-- **4/01/17 - F:** **>> Submit Group Proposal! <<**
+- **6/30/17 - F:** **>> Submit Group Proposal! <<**
 
 # Week 4: Midterm
 
