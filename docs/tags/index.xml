@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on STAT 385@UIUC SU2017</title>
-    <link>/su2017/tags/</link>
+    <link>/tags/</link>
     <description>Recent content in Tags on STAT 385@UIUC SU2017</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 12 Jun 2017 01:13:14 -0500</lastBuildDate>
     
-	<atom:link href="/su2017/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Course</title>
-      <link>/su2017/tags/course/</link>
+      <link>/tags/course/</link>
       <pubDate>Mon, 12 Jun 2017 01:13:14 -0500</pubDate>
       
-      <guid>/su2017/tags/course/</guid>
+      <guid>/tags/course/</guid>
       <description></description>
     </item>
     

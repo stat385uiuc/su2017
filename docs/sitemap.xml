@@ -3,50 +3,50 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/su2017/welcome-to-stat-385--uiuc/</loc>
+    <loc>/welcome-to-stat-385--uiuc/</loc>
     <lastmod>2017-06-12T01:13:14-05:00</lastmod>
   </url>
   
   <url>
-    <loc>/su2017/categories/announcements/</loc>
-    <lastmod>2017-06-12T01:13:14-05:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/su2017/categories/</loc>
+    <loc>/categories/announcements/</loc>
     <lastmod>2017-06-12T01:13:14-05:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/su2017/tags/course/</loc>
+    <loc>/categories/</loc>
     <lastmod>2017-06-12T01:13:14-05:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/su2017/post/</loc>
+    <loc>/tags/course/</loc>
     <lastmod>2017-06-12T01:13:14-05:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/su2017/</loc>
+    <loc>/post/</loc>
     <lastmod>2017-06-12T01:13:14-05:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/su2017/schedule/</loc>
+    <loc>/</loc>
+    <lastmod>2017-06-12T01:13:14-05:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
-    <loc>/su2017/syllabus/</loc>
+    <loc>/schedule/</loc>
   </url>
   
   <url>
-    <loc>/su2017/tags/</loc>
+    <loc>/syllabus/</loc>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
     <lastmod>2017-06-12T01:13:14-05:00</lastmod>
     <priority>0</priority>
   </url>

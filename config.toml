@@ -1,5 +1,5 @@
 publishDir = "docs"
-baseurl = "/su2017/"                     
+baseurl = "/"                     
 relativeurls = true                      
 languageCode = "en-us"                   
 title = "STAT 385@UIUC SU2017"           
