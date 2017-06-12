@@ -1,0 +1,44 @@
+publishDir = "docs"
+baseurl = "/su2017/"                     
+relativeurls = true                      
+languageCode = "en-us"                   
+title = "STAT 385@UIUC SU2017"           
+theme = "hugo-lithium-theme"             
+googleAnalytics = "UA-38501058-5"        
+disqusShortname = ""                     
+ignoreFiles = ["\\.Rmd$", "_files$", "_cache$"]
+
+[permalinks]
+    post = "/:section/:slug/"
+
+[[menu.main]]
+    name = "Syllabus"
+    url = "/syllabus/"
+[[menu.main]]
+    name = "Schedule"
+    url = "/schedule/"
+[[menu.main]]
+    name = "GitHub"
+    url = "https://github.com/stat385uiuc/su2017"
+[[menu.main]]
+    name = "Twitter"
+    url = "https://twitter.com/axiomsofxyz"
+
+[params]
+    description = "STAT 385: Statistics Programming Methods course website for Summer Session 2 in 2017"
+
+    # options for highlight.js (version, additional languages, and theme)
+    highlightjsVersion = "9.11.0"
+    highlightjsCDN = "//cdn.bootcss.com"
+    highlightjsLang = ["r", "yaml"]
+    highlightjsTheme = "github"
+
+    MathJaxCDN = "//cdn.bootcss.com"
+    MathJaxVersion = "2.7.1"
+
+    [params.logo]
+    url = "logo.png"
+    width = 50
+    height = 50
+    alt = "Logo"
+
