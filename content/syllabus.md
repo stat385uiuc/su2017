@@ -27,7 +27,7 @@ title: Syllabus
 - **Name:** James Balamuta
 - **Email:** [See e-mail policy](#email-policy)
 - **Office:** 122 Illini Hall
-- **Office Hours:** Monday and Tuesday 11:00 AM - 12:00 PM CDT
+- **Office Hours:** Monday and Tuesday 12:00 PM - 1:00 PM CDT
 
 # Course Description
 
@@ -373,7 +373,7 @@ the instructor ASAP to discuss feasibility.
 |------------------|----------------|--------------|
 | Participation    | 50             | 50           |
 | Homework         | 5 x 25         | 125          |
-| Exam             | 200            | 150          |
+| Exam             | 150            | 150          |
 | Group Project    | 4 x 43.75      | 175          |
 | **Course Total** |                | **500**      |
 
