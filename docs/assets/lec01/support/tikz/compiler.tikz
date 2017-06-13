@@ -1,0 +1,23 @@
+% Define block styles
+\tikzstyle{block} = [rectangle, draw, fill=blue!20, 
+    text width=5em, node distance=1cm, rounded corners, minimum height=1cm]
+\tikzstyle{line} = [draw, -latex']
+\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=1cm,
+    minimum height=2em]
+    
+\begin{tikzpicture}[node distance = 2cm, auto]
+    % Place nodes
+    \node [cloud, align=center] (source) {Source \\ Code};
+    \node [block, right=of source] (compiler) {Compiler};
+    \node [cloud, align=center, right= of compiler] (machine) {Machine \\ Code};
+    \node [cloud, below= of source] (input) {Input};
+    \node [block, align=center, right= of input] (execute) {Executable \\ Program};
+    \node [cloud, right= of execute] (output) {Output};
+    % Draw edges
+    \path [line] (source) -> (compiler);
+    \path [line] (compiler) -> (machine);
+    \path [line] (input) -> (execute);
+    \path [line] (execute) -> (output);
+
+    \path [line] (machine) -> (execute.north);
+\end{tikzpicture}
