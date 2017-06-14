@@ -1,7 +1,7 @@
 ---
 title: Course Introduction and Intro to R
 author: ''
-date: '2017-06-12'
+date: 2017-06-12T05:13:14-05:00
 slug: course-introduction-and-intro-to-r
 categories:
   - announcements
