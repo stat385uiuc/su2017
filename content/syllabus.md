@@ -408,6 +408,18 @@ To ensure that you do not violate the academic integrity policies, all code and
 solutions should be prepared yourself. All code should be typed yourself, **not**
 copy and pasted. (Except for code provided in class or in the textbook.)
 
+# Accessibility
+
+To obtain disability-related academic adjustments and/or auxiliary aids, 
+students with disabilities must contact the course instructor and the Disability
+Resources and Educational Services (DRES) as soon as possible. To contact DRES,
+you may visit 1207 S. Oak St., Champaign, call 333-4603, e-mail 
+<disability@illinois.edu> or go to the [DRES website](http://disability.illinois.edu/).
+If you are concerned you have a disability-related condition that is impacting
+your academic progress, there are academic screening appointments available on
+campus that can help diagnosis a previously undiagnosed disability by visiting
+the DRES website and selecting "Sign-Up for an Academic Screening" at the bottom
+of the page.
 
 # Changes
 
