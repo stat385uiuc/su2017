@@ -35,4 +35,4 @@ Generation Files:
 
 Source of all materials: 
 
-* <http://github.com/coatless/stat385/tree/gh-pages/assets/lectures/lec1>
+* <http://github.com/stat385uiuc/su2017/assets/lectures/lec01>
