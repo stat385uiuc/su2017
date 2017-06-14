@@ -35,4 +35,4 @@ Generation Files:
 
 Source of all materials: 
 
-* <http://github.com/stat385uiuc/su2017/assets/lectures/lec01>
+* <https://github.com/stat385uiuc/su2017/tree/master/static/assets/lectures/lec01>
