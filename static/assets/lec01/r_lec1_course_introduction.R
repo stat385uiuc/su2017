@@ -81,7 +81,7 @@ all.equal(result, out)   # Same value
 ## @knitr bad_loop
 bad.loop = function(){
   sum = 0
-  for(i in 1:1000){
+  for(i in 1:10000){
     a = 1/sqrt(2) # In loop
     sum = (sum+i)*a
   }
@@ -92,7 +92,7 @@ bad.loop = function(){
 good.loop = function(){
   sum = 0
   a = 1/sqrt(2) # Out of Loop
-  for(i in 1:1000){
+  for(i in 1:10000){
     sum = (sum+i)*a
   }
   sum

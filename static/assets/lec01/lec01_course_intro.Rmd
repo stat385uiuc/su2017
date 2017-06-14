@@ -59,7 +59,7 @@ read_chunk('r_lec1_course_introduction.R')
   \end{column}
   \begin{column}{.6\linewidth}
     \begin{itemize}
-      \item 4th Year PhD Statistics/Informatics
+      \item 4th Year PhD Informatics
       \item Research
       \begin{itemize}
         \item NASA Carbon Monitor System Project
@@ -99,7 +99,7 @@ read_chunk('r_lec1_course_introduction.R')
 
 ### Course Websites
 
-* **Main Website:** <http://stat385.thecoatlessprofessor.com/su2017>
+* **Main Website:** <http://stat385.thecoatlessprofessor.com>
 * **Discussion Forum:** <http://github.com/stat385uiuc/su2017-disc> (invite-only)
 * **Source Code Repository:**  <http://github.com/stat385uiuc/su2017>
 
