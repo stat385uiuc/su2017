@@ -41,3 +41,5 @@ Temporary Items
 # Hugo ignores
 public
 blogdown/*
+# Block caches from being included
+*_cache
