@@ -35,5 +35,9 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+# R specific ignores
 .Rproj.user
 .Rhistory
+# Hugo ignores
+public
+blogdown/cache/
