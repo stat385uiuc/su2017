@@ -40,4 +40,4 @@ Temporary Items
 .Rhistory
 # Hugo ignores
 public
-blogdown/cache/
+blogdown/*
