@@ -29,7 +29,7 @@ Rendered Files:
 Generation Files:
 
 * [Lecture 1: Course Introduction (Rmd)](/assets/lectures/lec01/lec01_course_intro.pdf)
-* [Lecture 1: Course Introduction (R)](/assets/lectures/lec01/r_lec1_course_introduction.R)
+* [Lecture 1: Course Introduction (R)](/assets/lectures/lec01/r_lec01_course_introduction.R)
 
 # Source Material
 
