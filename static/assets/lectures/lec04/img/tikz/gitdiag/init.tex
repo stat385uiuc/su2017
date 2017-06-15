@@ -1,0 +1,18 @@
+\documentclass[preview]{standalone}
+
+\usepackage{gitdags}
+
+\begin{document}
+    \centering
+    \begin{tikzpicture}
+      % Commit DAG
+      \gitDAG[grow left sep = 2em]{
+        A 
+      };
+      \gitbranch
+        {master}     % node name and text 
+        {above=of A} % node placement
+        {A}          % target
+    \end{tikzpicture}
+
+\end{document}

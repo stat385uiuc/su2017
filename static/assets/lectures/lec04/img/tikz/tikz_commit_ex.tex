@@ -1,0 +1,41 @@
+\documentclass{article}
+\usepackage{tikz}
+\usepackage{fixltx2e}
+\usetikzlibrary{shapes,arrows}
+\usetikzlibrary{positioning}
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+\setlength\PreviewBorder{5pt}%
+%%%>
+\begin{document}
+\pagestyle{empty}
+
+% Define block styles
+\tikzstyle{decision} = [diamond, draw, fill=blue!20,
+    text width=6.5em, text badly centered, node distance=3cm, inner sep=0pt]
+\tikzstyle{header} = [rectangle,
+    text width=10em, text centered,, minimum height=4em,node distance=4cm]
+\tikzstyle{block} = [rectangle, draw, fill=blue!20,
+    text width=10em, text centered, rounded corners, minimum height=4em,node distance=6cm]
+\tikzstyle{mycircle} = [circle, thick, draw=orange, minimum height=4mm]
+
+\tikzstyle{line} = [draw, -latex']
+\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3cm,
+    minimum height=2em]
+
+\begin{tikzpicture}[align=center,node distance = 2cm, auto]
+    % Place nodes
+    \node [header] (initfiles) {\textbf{Versioning by File Names}};
+    \node [header, right of=initfiles]  (initcommit) {\textbf{Versioning by VCS}};
+    \node [block, below of= initfiles] (file1) {cleaning\_script.R \\ data\_clean\_v1.rda};
+    \node [block, below of=initcommit] (commit1) {Files: data\_clean.rda, cleaning\_script.rda \\
+                                                                                            Commit Msg: Initial cleaning script};
+
+
+
+    % Draw edges
+    %\path [line] (init) -- (setloadavg);
+
+
+\end{tikzpicture}
+\end{document}

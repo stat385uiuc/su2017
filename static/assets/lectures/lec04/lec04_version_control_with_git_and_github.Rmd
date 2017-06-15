@@ -1,0 +1,958 @@
+---
+title: "Version Control with Git and GitHub"
+short-title: "VCS"
+author: "James Balamuta"
+short-author: "J Balamuta"
+date: '`r format(Sys.Date(), "%B %d, %Y")`'      # Month DD, YYYY (Main Slide)
+short-date: '`r format(Sys.Date(), "%m/%d/%Y")`' # MM/DD/YYYY (Lower Right)
+institute: "University of Illinois at Urbana-Champaign"
+short-institute: "UIUC"
+department: "Department of Statistics, Informatics"                # Institute must be defined
+license: "CC BY-NC-SA 4.0, 2016 - 2017, James J Balamuta"
+section-titles: true                             # Provides slide headings
+safe-columns: true                               # Enables special latex macros for columns.
+output: 
+   uiucthemes::beamer_illinois
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
+```
+
+# Intro 
+
+## Background
+
+### What are Version Control Systems?
+
+**Version Control Systems (VCS)** are applications that seeks to provide a way
+to _manage_ and _track_ the evolution of work done on a project.
+
+### How does it work?
+
+Think of a VCS like a camera. Each time you take a picture, time is being "frozen"
+in place and stored in a photo album.
+
+```{r young_to_old, cache = TRUE, echo = FALSE, eval = TRUE, fig.align='center', out.width='10cm'}
+knitr::include_graphics("img/young_to_old.jpg")
+```
+
+In essence, an _incomplete_ history of your project will be etched into stone.
+
+### Why is the history incomplete?
+
+> The pictures do not lie, but neither do they tell the whole story. 
+> They are merely a record of time passing, the outward evidence.
+>
+> --- Paul Auster, [Travels in the Scriptorium](https://www.amazon.com/Travels-Scriptorium-Paul-Auster/dp/B006W46NI6)
+
+- Granularity of change
+- Developers come and go; so does the context
+
+## Pros and Cons
+
+### It's time to have 'the talk' about how we name files...
+
+```{r bad_file_names, cache = TRUE, echo = FALSE, eval = TRUE, fig.align='center', out.width='10cm'}
+knitr::include_graphics("img/file_names.png")
+```
+
+Inspired by [PhD Comics: A Story told in File Names](http://www.phdcomics.com/comics/archive.php/tellafriend.php?comicid=1323)
+
+### Redux of File Naming
+
+Under version control, the previous file structure would be changed to:
+
+```{r ideal_file_names, cache = TRUE, echo = FALSE, eval = TRUE, fig.align='center', out.width='10cm'}
+knitr::include_graphics("img/ideal_file_names.png")
+```
+
+- All changes to the cleaning script and cleaning data set are stored
+  within the VCS. 
+- **There is no need to label _version_ information within the
+  file name.**
+
+### Example of Versioning
+
+```{r vcs_vs_file_meta, cache = TRUE, echo = FALSE, eval = TRUE, fig.align='center', out.width='11cm'}
+knitr::include_graphics("img/vcs-file-flow/vcs-vs-file-meta.png")
+```
+
+### Pros v. Cons
+
+#### Benefits of VCS
+
+- Abridged history changes to your project
+- Ability to transverse the space-time continuum 
+- Try out _new_ ideas without worrying about breaking something!
+- Collaborate with others _without_ waiting for their component to be finished
+- Continuous Integration (CI) allows for problems to be detected early
+
+#### Downsides of VCS
+
+- Not user-friendly
+- Takes a bit of **time** and **practice** to understand.
+- Windows support normally _lags_ behind macOS and Linux
+
+
+## Why `git`?
+
+### VCS Options
+
+There are many VCS that are available:
+
+- [`git`: git](http://git-scm.com/)
+- [`svn`: Subversion](http://subversion.tigris.org/)
+- [`cvs`: Concurrent Versions System](http://www.nongnu.org/cvs/)
+
+However, the general consensus is that `git` is the **best** because:
+
+- It's free
+- Multi-platform
+- Rapidly growing ecosystem 
+- Distributed versioning model
+- Large industry support
+
+Therefore, the focus of the course will be in working with `git`.
+
+### Distributed Model vs. Centralized Model
+
+- `git` uses a **distributed model** that gives 
+  _everyone_ a copy of the repository.
+    - Making and distributing digital copies of the party's photos.
+- Other VCS opt for a **centralized model** that requires everyone to
+  be connected to a server to individually check out files.
+    - Think of checking out the only book at a library.
+
+\begincols
+
+\column{.49\linewidth}
+
+\textbf{\textcolor{black}{Distributed Version Control}}
+
+```{r dvcs_diagram, cache = TRUE, echo = FALSE, eval = TRUE, fig.align='center', out.width='3cm'}
+knitr::include_graphics("img/vcs-types/dvcs-diagram.png")
+```
+
+\column{.49\linewidth}
+
+\textbf{Centralized Version Control}
+
+```{r cvcs_diagram, cache = TRUE, echo = FALSE, eval = TRUE, fig.align='center', out.width='4.3cm'}
+knitr::include_graphics("img/vcs-types/cvcs-diagram.png")
+```
+\endcols
+
+Picture Source [Pro Git](http://iissnan.com/progit/html/en/ch1_1.html)
+
+
+## Terminology
+
+### `git` Terminology
+
+There are _many_ terms associated with a `git` workflow. 
+
+We'll explore a few of those terms next.
+
+### General Terms
+
+- **HEAD** refers to the point in time one is currently viewing.
+- **Stage** is a holding area that indicates what files should be captured.
+    - Place where pictures are being prepared to be taken.
+- **Commits** are the saved records of the staged files.
+    - Photos _taken_ on the stage.
+- **Repositories** ("repos") hold all the **commits** to the project.
+    - Photo ablum containing the photos.
+- **Branches** experiments that do _not_ influence the state of the **repo**
+    - New ways to take pictures _without_ affecting previously taken pictures. 
+- **Master** is the default **branch** that **commits** are saved to 
+    - General photo album of life.
+- **Checkout** changes the **branch** being viewed or moves the **HEAD** back to a specific **commit**.
+    - Open the photo album to a specific point in time or experiment.
+
+### Repository Diagram
+
+```{r git_local_branch, cache = TRUE, echo = FALSE, eval = TRUE, fig.align='center', out.width='10cm'}
+knitr::include_graphics("img/vcs-file-flow/git-local-branch.png")
+```
+
+### Sync Terms
+
+- **Cloning** creates a copy of the **repo** onto ones computer.
+    - Downloading the photo album in its entirety from the _cloud_.
+- **Local** refers to the copy of the **repo** on your computer.
+    - Photo album on your computer.
+- **Remote**/**Upstream** location of where the **repo** was **cloned** from.
+    - Where the photo album is stored in the _cloud_.
+- **Origin** typically the name given to the **remote** location. 
+    - Nickname of the location of the photo album in the _cloud_.
+- **Pull** retrieve commits from the **remote repo**.
+    - Download _new_ pictures from the _cloud_ to your local album.
+- **Push** send commits from  the **local repo** to the **remote**.
+    - Upload _new_ pictures to the _cloud_ photo album.
+    
+### Repository Diagram with Remotes
+
+```{r git_remote_diag, cache = TRUE, echo = FALSE, eval = TRUE, fig.align='center', out.width='10cm'}
+knitr::include_graphics("img/vcs-file-flow/git-remote-diag.png")
+```
+
+# GitHub
+
+## Background
+
+### What is GitHub?
+
+```{r github_logo, cache = TRUE, echo = FALSE, eval = TRUE, fig.align='center', out.width='1.5cm'}
+knitr::include_graphics("img/github-logos/github-octo.png")
+knitr::include_graphics("img/github-logos/github-logo.png")
+```
+
+- Popular place to setup a remote repository
+    - Over 14 million users and 35 million repos as of April 2016
+- Provides a web interface for `git`
+    - Search the space-time continuum of your project
+- Promotes open source tenets 
+    - _View_ code instantly for any large open source project.
+
+### Why use GitHub?
+
+- Improves the user experience for using `git`
+    - Visually explore code differences
+- Enables collaboration with others via pull requests (PRs) and issue tickets
+    - Changes the paradigm from _asking_ for a fix to _providing_ a fix 
+- Social media for the programmer
+    - News feeds that track what your favorite programmer / projects are up to
+- Accessible from all over the world 
+    - Except in China...
+
+## Accounts
+
+### Create a GitHub Account
+
+Register an account on [GitHub](http://github.com) using your `@illinois.edu`
+e-mail address.
+
+```{r github_reg, cache = TRUE, echo = FALSE, eval = TRUE, fig.align='center', out.width='10cm'}
+knitr::include_graphics("img/git/github_reg.png")
+```
+
+### Request a Student Account
+
+Place a request using [GitHub Education](https://education.github.com/discount_requests) to obtain **unlimited** free private repositories. Also, consider forming an organization, which is able to receive **unlimited** free private repositories with fine permission control. 
+
+```{r ed_discount, cache = TRUE, echo = FALSE, eval = TRUE, fig.align='center', out.width='8cm', out.height='5.75cm'}
+knitr::include_graphics("img/git/ed_discount.png")
+```
+
+### Fill in your GitHub Profile
+
+After you create an account, feel free to fill in your profile information
+by clicking on the **down arrow** in the upper right hand corner and selecting **Settings**
+
+```{r git_profile, cache = TRUE, echo = FALSE, eval = TRUE, fig.align='center', out.width='8cm', out.height='5.75cm'}
+knitr::include_graphics("img/git/git_profile.png")
+```
+
+### Star and Follow the Course Repository
+
+Receive updates when the course repository gets updated by **Watching** and
+**Starring** the course repository <https://github.com/stat385uiuc/su2017>
+
+```{r git_star_me, cache = TRUE, echo = FALSE, eval = TRUE, fig.align='center', out.width='8cm', out.height='5.75cm'}
+knitr::include_graphics("img/git/git_star_me.png")
+```
+
+### BitBucket: An alternative to GitHub
+
+Dislike GitHub? Consider using [BitBucket](https://bitbucket.org/). The repositories are generally more closed source than GitHub. However, for researchers and students, BitBucket provides [unlimited private repositories with unlimited contributors](https://www.atlassian.com/software/views/bitbucket-academic-license.jsp).
+
+```{r bitbucket_reg, cache = TRUE, echo = FALSE, eval = TRUE, fig.align='center', out.width='7cm'}
+knitr::include_graphics("img/git/bitbucket_reg.png")
+```
+
+# Git
+
+## Setup
+
+### Tutorial
+
+Please follow the tutorial to setup git found here:
+
+<http://thecoatlessprofessor.com/tutorials/downloading-and-installing-git/>
+
+## Workflow
+
+### `git` Commands
+
+Unlike the shell commands, where each command was separated (e.g. `head`, `tail`),
+`git` has a series of verbs associated with a single command aptly named `git`.
+
+To use `git` commands use the form of:
+
+```bash
+git <verb>
+```
+
+To obtain help regarding a specific command, use:
+
+```bash
+git <verb> --help
+man git-<verb>
+```
+
+### General Workflow Overview
+
+The general workflow with `git` is as follows
+
+```{bash}
+git init       # Create a repo or initialize an prior repo
+git pull       # Retrieve latest commits from remote repo
+git status     # Figure out the state of files
+git add <file> # Stage a specific file(s) to be commited
+               ## OR ##
+git add .      # All files within the working directory
+git commit     # Commit the staged file(s) into the repo
+git status     # Verify the proper files have been committed
+git push       # Sync to remote repository
+```
+
+
+### Initializing a Repository
+
+The initialization of a `git` repository requires the directory to be empty.
+
+- Create an empty directory called `helloworld` and change into the directory.
+```{bash}
+mkdir helloworld && cd helloworld
+```
+- Initialize a new git repository
+```{bash}
+git init
+```
+
+### Adding Sample Content
+
+To add content, first create a file using `touch` and then open it with your
+favorite CLI editor.
+
+```{bash}
+touch readme.md
+vi readme.md
+```
+
+```{r empty_initial_file, cache = TRUE, echo = FALSE, eval = TRUE, fig.align='center', out.width='8.5cm'}
+knitr::include_graphics("img/git-walk/empty_initial_file.png")
+```
+
+### Enable Insert Mode
+
+To be able to add text via a CLI, you must enter into **`INSERT`** mode.
+This is accomplished by pressing **`i`** or the **`Insert`** button.
+
+```{r initialize_insert, cache = TRUE, echo = FALSE, eval = TRUE, fig.align='center', out.width='9.5cm'}
+knitr::include_graphics("img/git-walk/initialize_insert.png")
+```
+Note, in the bottom left of terminal, the word **`INSERT`** appears.
+
+There are a few other ways to active **`INSERT`** mode detailed here:
+<http://vi.stackexchange.com/a/5635>
+
+### Example of Content
+
+If you wish, feel free to type in the following:
+
+```
+# Example git workflow
+
+Within this repository we will be practicing how to commmit
+with git.
+```
+
+### Example of Content in CLI Editor
+
+```{r sample_file_contents, cache = TRUE, echo = FALSE, eval = TRUE, fig.align='center', out.width='9.5cm'}
+knitr::include_graphics("img/git-walk/sample_file_contents.png")
+```
+
+### Saving and Closing the CLI Editor
+
+To close and save the file, press **`ESC`** and then type **:wq**. 
+
+In instances where you do _not_ want to modify the file but close it, use **`:q!`**
+
+```{r write_change_and_quit, cache = TRUE, echo = FALSE, eval = TRUE, fig.align='center', out.width='9.5cm'}
+knitr::include_graphics("img/git-walk/write_change_and_quit.png")
+```
+
+### Checking the Status of `git`
+
+Often it is helpful to know the present status of `git`. The status tells you:
+
+- Untracked files 
+    - Yet to be staged
+- Staged files
+    - Need to be committed into the repo
+- File conflicts from mergs 
+    - More on this later...
+
+Check with:
+
+```{bash}
+git status
+```
+
+### Checking the Status of `git`
+
+```{bash}
+git status
+```
+
+\scriptsize
+```{bash, eval = FALSE, size="scriptsize"}
+On branch master
+Your branch and 'origin/master' have diverged,
+and have 1 and 1 different commits each, respectively.
+  (use "git pull" to merge the remote branch into yours)
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+  (use "git merge --abort" to abort the merge)
+
+Unmerged paths:
+  (use "git add <file>..." to mark resolution)
+
+	both modified:   readme.md
+
+no changes added to commit (use "git add" and/or "git commit -a")
+```
+
+
+### Stage the File
+
+To prepare the file for inclusion within our repository, we must first _stage_ it.
+By staging the file, we are telling `git` that we intend for the file to be
+apart of the next `commit`.
+
+```{bash}
+git add readme.md
+```
+
+**Note:** There will be _no_ output indicating whether the file is staged.
+
+
+### Checking the Status of `git`
+
+Let's verify the file has been _staged_ by running a `status` check:
+
+```{bash}
+git status
+```
+
+```{bash, eval = FALSE}
+On branch master
+Your branch and 'origin/master' have diverged,
+and have 1 and 1 different commits each, respectively.
+  (use "git pull" to merge the remote branch into yours)
+All conflicts fixed but you are still merging.
+  (use "git commit" to conclude merge)
+
+Changes to be committed:
+
+	modified:   readme.md
+```
+
+
+### Writing a Commit Message
+
+With the file now staged, the file can be included within the repository by
+committing it. All commits must have a comment indicating what is being commited
+into the repository.
+
+There are two forms of commits:
+
+- Long form: `git commit` (spawns CLI)
+- Short form: `git commit -m "Message here"`
+
+Depending on the project, there may be a preference for one over the other.
+
+### Preferred Git Commit
+
+The preferred `git` commit is done with:
+
+```
+Short description of 50 characters indicating a change
+
+Long description of what changed and why the change was
+necessary. This description may be multilined.
+```
+
+**Note:** There are two returns between the short and long description.
+
+### The Reality
+
+```{r git_commit, cache = TRUE, echo = FALSE, eval = TRUE, fig.align='center', out.width='8cm'}
+knitr::include_graphics("img/comic/git_commit.png")
+```
+
+Source [XKCD: Git Commit](https://xkcd.com/1296/)
+
+### The Long Form `git commit`
+
+View when entering into a proper long form `git` commit.
+
+```{r entering_git_commit, cache = TRUE, echo = FALSE, eval = TRUE, fig.align='center', out.width='9.5cm'}
+knitr::include_graphics("img/git-walk/entering_git_commit.png")
+```
+
+
+### The Long Form `git commit`
+
+1. Enable **`INSERT`** mode
+2. Write the long form `git commit`
+3. Exit from the CLI text editor using **`:wq`**
+
+```{r exiting_git_vim, cache = TRUE, echo = FALSE, eval = TRUE, fig.align='center', out.width='9.5cm'}
+knitr::include_graphics("img/git-walk/exiting_git_vim.png")
+```
+
+### Did you forget to introduce yourself?
+
+If during your first commit, you received:
+
+```{bash, eval = FALSE}
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+```
+
+You will need to introduce yourself to git! Otherwise, it won't be a very
+productive partnership.
+
+### Result of the Commit
+
+```{bash, eval = FALSE}
+[master (root-commit) 780ef6c] Added Added a readme file
+ 1 files changed, 4 insertions(+)
+ create mode 100644 readme.md
+```
+
+### Create a GitHub Repository
+
+```{r create_repo, cache = TRUE, echo = FALSE, eval = TRUE, fig.align='center', out.width='11cm'}
+knitr::include_graphics("img/git/create_repo.png")
+```
+
+### Create a GitHub Repository
+
+When establishing the repository, consider adding a license to your code.
+
+```{r repo_details, cache = TRUE, echo = FALSE, eval = TRUE, fig.align='center', out.width='9cm'}
+knitr::include_graphics("img/git/repo_details.png")
+```
+
+### Obtain GitHub Repository Link
+
+```{r copy_repository, cache = TRUE, echo = FALSE, eval = TRUE, fig.align='center', out.width='10cm'}
+knitr::include_graphics("img/git/copy_repository.png")
+```
+
+### Add the Remote
+
+To let your local git repository know about the new remote we must use:
+
+```{bash, eval = FALSE}
+git remote add origin <github_url>
+```
+
+In my case that would be:
+
+```{bash, eval = FALSE}
+git remote add origin git@github.com:coatless/helloworld.git
+```
+
+### Verify the Remote
+
+```{bash, eval = FALSE}
+git remote -v
+```
+
+```{bash, eval = FALSE}
+origin  git@github.com:coatless/helloworld.git (fetch)
+origin  git@github.com:coatless/helloworld.git (push)
+```
+
+### Push the changes
+
+To send your changes to the remote simply:
+
+```{bash, eval = FALSE}
+git push
+```
+
+Though, there are two key issues that may arise:
+
+1. The dreaded merge conflicts.
+2. You must be authenticated on GitHub with an `ssh` key.
+
+## Merge Conflict
+
+### Merge Conflicts
+
+To address merge conflicts take the following steps:
+
+1. Figure out the files that are in conflict by using `git status`
+2. Open each conflicted file.
+3. Decide which change set to keep or remove.
+
+```{bash, eval = FALSE}
+<<<<<<< HEAD
+Change in the local file
+=======
+Change that someone made in the remote file
+>>>>>>> 5e2443102fbf316b88dc3cd3922bc680668de655
+```
+
+- `<<<<<<<` - Beginning of merge conflict where _YOUR_ changes reside
+- `=======` - The end of your changes and the beginning of the remotes
+- `>>>>>>>` - End of the remotes changes for that merge section conflict.
+
+### Merge Conflicts
+
+To retain my commit, I delete all other changes.
+
+**Before:**
+```{bash, eval = FALSE}
+<<<<<<< HEAD
+Change in the local file
+=======
+Change that someone made in the remote file
+>>>>>>> 5e2443102fbf316b88dc3cd3922bc680668de655
+```
+
+**After:**
+```{bash, eval = FALSE}
+Change in the local file
+```
+
+Then `git add`, `git commit`, and `git push` my changes.
+
+## Authorization
+
+### Authorizing...
+
+One of the downsides of pushing to GitHub is the need to be authenticated...
+
+```{r review_changes, cache = TRUE, echo = FALSE, eval = TRUE, fig.align='center', out.width='10cm'}
+knitr::include_graphics("img/project/review_changes.png")
+```
+
+### Good Authorization via Public and Private SSH Keys
+
+To simplify this process, we opt to authorize ourselves to GitHub using an encryption technique that uses a **public and private key scheme**.
+
+In this case, the public key is a string of symbols that is out there for the world to see. 
+
+On the other hand, the private key is considered to be confidential and only viewable by its owner. 
+
+This scheme enables messages signed with the private key to only be viewable via its public key (and vice versa).
+
+### Good Authorizing - SSH Key Generation
+
+Instructions for generating an SSH key are given in two flavors:
+
+1. Using RStudio's GUI
+1. Using Shell/Terminal
+
+You only need to pick **one** route.
+
+### Good Authorizing - SSH Key Generation via RStudio
+
+\begin{columns}[t]
+\column{.36\textwidth}
+\centering
+\begin{block}{Click \texttt{`Tools'} \\ Select \texttt{`Global Options'}}
+\centering
+\includegraphics[scale=0.5]{img/configrstudio_opt.png}
+\end{block}
+\column{.53\textwidth}
+\centering
+\begin{block}{Click \texttt{`Git/SVN'} \\ Click the \texttt{`Create RSA Key...'}}
+\centering
+\includegraphics[scale=0.27]{img/ssh/rstudio_blank_ssh.png}
+\end{block}
+\end{columns}
+
+### Good Authorizing - SSH Key Generation via RStudio
+
+\begin{columns}[t]
+\column{.36\textwidth}
+\centering
+\begin{block}{Click \texttt{`Close'}}
+\centering
+\includegraphics[scale=0.21]{img/ssh/rstudio_succesful_generation.png}
+\end{block}
+\column{.53\textwidth}
+\centering
+\begin{block}{Click \texttt{`View Public Key'}}
+\centering
+\includegraphics[scale=0.27]{img/ssh/rstudio_ssh_key.png}
+\end{block}
+\end{columns}
+
+### Good Authorizing - SSH Key Generation via RStudio
+
+
+\begin{block}{Copy the public key with either \\ macOS: \texttt{Command} + \texttt{C} or Windows: \texttt{Cntrl} + \texttt{C}}
+\centering
+\includegraphics[scale=0.35]{img/ssh/rstudio_public_key.png}
+\end{block}
+
+With the key being generated and on our clipboard, we can now add it to our GitHub account... 
+
+### Good Authorizing - Add Public SSH Key to GitHub
+
+\begin{columns}[t]
+\column{.49\textwidth}
+\centering
+\begin{block}{Click on the picture in the upper right corner \\ Select \texttt{`Settings'}}
+\centering
+\includegraphics[scale=0.5]{img/ssh/github_settings_menu.png}
+\end{block}
+\column{.49\textwidth}
+\centering
+\begin{block}{Click \texttt{`SSH and GPG Keys'}}
+\centering
+\includegraphics[scale=0.4]{img/ssh/github_profile_menu.png}
+\end{block}
+\end{columns}
+
+
+
+### Good Authorizing - Add Public SSH Key to GitHub
+
+\begin{block}{Press the \texttt{`New SSH Key'} button}
+\centering
+\includegraphics[scale=0.35]{img/ssh/github_new_ssh_key.png}
+\end{block}
+
+\begin{block}{Fill in the \texttt{`Title'} input and paste the SSH into \texttt{`Key'} with either \\ macOS: \texttt{Command} + \texttt{V} or Windows: \texttt{Cntrl} + \texttt{V}}
+\centering
+\includegraphics[scale=0.32]{img/ssh/github_ssh_key_add_example.png}
+\end{block}
+
+
+### Good Authorizing - Add Public SSH Key to GitHub
+
+\begin{block}{Check that the key has been added}
+\centering
+\includegraphics[scale=0.45]{img/ssh/github_added_success.png}
+\end{block}
+
+If you have made it to this step, well done! 
+
+\centering
+\Large
+\textbf{You can now officially commit via SSH.}
+
+### Good Authorizing - SSH Key Generation
+
+As promised, next up are the instructions for SSH key generation within Terminal/Shell...
+
+\Large
+\centering
+Do \textbf{NOT} repeat this if you opted for to generate the SSH key using the RStudio approach.
+
+### Good Authorizing - SSH Authorization via Terminal
+
+Use SSH Authorization by opening terminal/shell 
+
+(in RStudio access it via Tools $\rightarrow$ Shell)
+
+\scriptsize
+```{bash git_os_x, size='scriptsize'}
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com" # Creates new SSH Key
+
+# After the key is generated, you will be prompted with
+Enter a file in which to save the key (/Users/you/.ssh/id_rsa): [Press enter]
+
+# Create a password for the key (needs to be rememberable)
+Enter passphrase (empty for no passphrase): [Type a passphrase]
+Enter same passphrase again: [Type passphrase again]
+
+# Start the SSH Agent
+eval "$(ssh-agent -s)"
+
+# Add the key
+ssh-add ~/.ssh/id_rsa
+```
+
+###
+
+Copy key to clipboard
+
+Windows:
+```{bash, git_win, size='footnotesize'}
+clip < ~/.ssh/id_rsa.pub
+```
+
+macOS:
+```{bash git_mos, size='footnotesize'}
+pbcopy < ~/.ssh/id_rsa.pub
+```
+
+Then we add the key to GitHub using the previous steps... 
+
+### Bad Authorizing - Revealing Login Information
+
+Sometimes, `ssh` may be limited due to the internet options you have at your
+disposal. At times like this, there is one last option. 
+
+**Authenticate over HTTPS.**
+
+The approach detailed next is suboptimal as you end up having to _store_ your
+login credentials alongside the repository URL.
+
+### Bad Authorization - Use this approach when everything fails
+
+\begin{center}
+\textcolor{red}{This is a very bad option since R Studio does NOT hash .proj files.}
+\end{center}
+
+When you enter in your GitHub repository to create your R Project, append your username and password like so to the URL:
+
+```{bash git_bad}
+https://username:password@github.com/username/helloworld.git
+```
+
+
+# RStudio with `git`
+
+## Sample Workflow
+
+### RStudio `git` Client
+
+Previously, details were given as to how to work _solely_ with a CLI `git` client.
+
+However, RStudio does have a built in `git` client that is not necessarily ideal.
+But, definitely worth mentioning in the scope of this `git` tutorial. The reason
+is because there are a few limitations to the client and it also involves using
+a GUI.
+
+### Create a new RStudio Project
+
+\begin{columns}[t]
+\column{.36\textwidth}
+\centering
+\begin{block}{Open Project Menu \\ Select `New Project'}
+\centering
+\includegraphics[scale=0.32]{img/project/open_menu.png}
+\end{block}
+\column{.53\textwidth}
+\centering
+\begin{block}{Select Version Control}
+\centering
+\includegraphics[scale=0.36]{img/project/select_vc_project.png}
+\end{block}
+\end{columns}
+
+
+### Create a new R Studio Project
+
+```{r git_project_details, cache = TRUE, echo = FALSE, eval = TRUE, fig.align='center', out.width='8cm'}
+knitr::include_graphics("img/project/git_project_details.png")
+```
+
+### RStudio - Project View
+
+```{r project_view_git, cache = TRUE, echo = FALSE, eval = TRUE, fig.align='center', out.width='11cm'}
+knitr::include_graphics("img/project/project_view_git.png")
+```
+
+### Using git via R Studio
+\begin{columns}[t]
+\column{.45\textwidth}
+\centering
+\begin{block}{Select file to be staged \\ Press `Commit'}
+\centering
+\includegraphics[scale=0.32]{img/project/staging_git.png}
+\end{block}
+\column{.5\textwidth}
+\centering
+\begin{block}{Enter commit message \\ Press `Commit' \\ Press `Push'}
+\centering
+\includegraphics[scale=0.36]{img/project/commit_step_git.png}
+\end{block}
+\end{columns}
+
+
+
+# Extra
+
+### Git Commands
+
+Basic Git Commands:
+\begin{description}[labelsep=1in, labelindent=.5cm]
+\item[git init:] Initializes a new git repository. (Must be run to setup repo, no repo = no commands working)
+\item[git config $<$option$>$:] Configure git options 
+\item[git help $<$command$>$:] Provides information on how to use and configure a specific git command.
+\item[git status:] See what files are in the repository, what changes need to be committed, and what branch of the repository is active.
+\end{description}
+
+### Git Commands
+
+Feature Development Commands:
+\begin{description}[labelsep=1in, labelindent=.5cm]
+\item[git add $<$file$>$:] Add a new or changed file or files (.) into a ``staging" area.
+\item[git commit -m ``Message here" :] Pushes change into the repository with message
+\item[git checkout:] A way to select which line of development you're working on. (e.g. Master or your own branch)
+\item[git branch $<$name$>$:] Build a new branch off of the active repository to make changes and file additions that are completely your own.
+\item[git merge:] Merge changes in your branch back to the master branch.
+\end{description}
+
+### Git Commands
+
+Syncing Git Commands:
+\begin{description}[labelsep=1in, labelindent=.5cm]
+\item[git remote:] Create, view, and delete connections to other repositories. 
+\item[git fetch:] Imports commits from a remote repository into your local repository. Helpful for reviewing changes before integrating them into the master branch.
+\item[git push:] Push the local changes to the repository up to the version control server.
+\item[git pull:] Pull the newest changes from the version control server to your local environment. 
+\end{description}
+
+### Sample git workflow
+
+\tiny
+```{bash sample_git , eval = FALSE, size = 'tiny'}
+# Make sure repo is up to date
+git checkout master
+git fetch origin master
+git pull --rebase origin
+
+# Start a new feature
+git checkout master
+git branch AdvOfJames
+git checkout AdvOfJames
+# or: git checkout -b AdvOfJames master
+
+# Add a new file
+git add GiantPeach.r
+git commit -m "New feature started"
+
+# Update a file with changes
+git add GiantPeach.r
+git commit -m "New feature finished"
+
+# Merge in the AdvOfJames branch
+git checkout master      # Switch to master
+git merge AdvOfJames     # Merge in change
+git branch -d AdvOfJames # Remove development branch
+
+# Push update
+git push origin master
+```
