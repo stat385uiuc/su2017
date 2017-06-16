@@ -21,18 +21,20 @@ Note: All homework is due on **Sunday** at **11:59 PM CDT** by e-mail to
 
 # Week 1: Syllabus Week
 
-- **6/12/17 - M:** [Course Introduction and Intro R](http://stat385.thecoatlessprofessor.com/course-introduction-and-intro-to-r/)
-- **6/13/17 - T:** Concepts of Reproducible Research and the Bash Shell
-- **6/15/17 - R:** Literate Programming to achieve a reproducible analysis using
-                    [`knitr`](http://yihui.name/knitr/), 
+- **6/12/17 - M:** [Course Introduction and Intro R](course-introduction-and-intro-to-r/)
+- **6/13/17 - T:** [Concepts of Reproducible Research and the Bash Shell](concepts-of-reproducible-research-and-the-bash-shell/)
+- **6/15/17 - R:**
+    - [Literate Programming to achieve a reproducible analysis](literate-programming-to-achieve-a-reproducible-analysis/)
+                   using [`knitr`](http://yihui.name/knitr/), 
                     [`markdown`](https://daringfireball.net/projects/markdown/),
                     [`rmarkdown`](http://rmarkdown.rstudio.com), 
                     [`git`](https://git-scm.com/doc)
-
+    - [Version Control](version-control-with-git-and-github/)
+                   with [`git`](https://git-scm.com/doc) and [GitHub](https://github.com/join)
+                   
 # Week 2: Welcome to R
 
-- **6/19/17 - M:** Version Control with [`git`](https://git-scm.com/doc) and
-[GitHub](https://github.com/join)
+- **6/19/17 - M:** 
 - **6/20/17 - T:** 
     - **>> You must be in a group by now! <<**
 - **6/22/17 - R:** 
