@@ -4,6 +4,7 @@ date: '2017-06-16'
 slug: homework-1-crash-into-programming
 categories:
   - announcements
+  - homework
 tags:
   - homework
 ---
@@ -30,9 +31,8 @@ Academic Integrity will be punished **as severely as possible**.
     * The RMarkdown (`.Rmd`) file must be saved as `hw1_yourNetID.Rmd`,
       e.g.  `hw1_balamut2.Rmd`
     * The generated output from the `.Rmd` file is then contained in
-      `hw1_yourNetID.html`, e.g. `hw1_balamut2.Rmd`.
-    * Any code should be placed in an external file given as
-      `r_hw1_yourNetID.R`, e.g. `r_hw1_balamut2.R`.
+      `hw1_yourNetID.html`, e.g. `hw1_balamut2.html`. This assumes that you 
+      have set `output: html_document` in the YAML.
 * Under this structure, the content found within the `.html` file will be 
   considered a "report" which is the material that will determine the majority
   of your grade. Be sure to visibly include all `R` code and output that is
