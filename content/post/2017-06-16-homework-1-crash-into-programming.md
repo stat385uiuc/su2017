@@ -1,6 +1,6 @@
 ---
 title: "Homework 1: Crash into Programming"
-date: "June 16, 2017"
+date: '2017-06-16'
 slug: homework-1-crash-into-programming
 categories:
   - announcements
