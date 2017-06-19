@@ -26,7 +26,7 @@ Rendered Files:
 
 Generation Files:
 
-* [Lecture 3: Version Control with git and GitHub (Rmd)](/assets/lectures/lec04/lec04_version_control_with_git_and_github.Rmd)
+* [Lecture 4: Version Control with git and GitHub (Rmd)](/assets/lectures/lec04/lec04_version_control_with_git_and_github.Rmd)
 
 # Source Material
 
