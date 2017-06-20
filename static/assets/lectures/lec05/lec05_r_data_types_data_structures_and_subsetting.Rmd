@@ -103,8 +103,8 @@ knitr::include_graphics("figures/orange_logo.gif")
 
 - For the most part, we will follow [Google's style advice](https://google.github.io/styleguide/Rguide.xml),
   which is also used by many developers.
-- The main exception to this principle is the avoidance of using the `->` and
-  `<-` assignment operators outside of piping (more later). 
+- The main exception to this principle is the avoidance of using the `<-` and
+  `->` assignment operators outside of piping (more later). 
     - Of course, you can also switch this by using [formatR](http://yihui.name/formatR/)
     by [Yihui Xie](http://yihui.name) ([knitr author](http://yihui.name/knitr)).
 
@@ -114,7 +114,7 @@ x = 1  # Good
 x <- 1 # Bad
 ```
 
-### Example of Style
+### Examples of Style
 
 \scriptsize
 
@@ -166,7 +166,7 @@ The different types of data supported by `R` are as follows:
 - Numeric (double/float)
     - Examples: `-2`, `0.0`, `6.1`, `41.234`
 - Integer
-    - Examples: `-2L`,`0L`, `3L`, `10L`
+    - Examples: `-2L`, `0L`, `3L`, `10L`
 - Complex
     - Examples: `-1 + 2i`, `0 + 0i`, `1 - 2i`
 - Logical (boolean)
@@ -210,26 +210,6 @@ By enclosing the assignment within paranthesis, e.g. `()`, we can omit one line:
 
 
 ## Missingness and Constants
-    
-### Storing Missingness in a Variable
-
-> An NA is the presence of an absence. Don't forget that some missing values 
-> are the absence of a presence
->
-> --- Hadley Wickham [twitter](https://twitter.com/hadleywickham/status/738802081448886272)
-
-Within R, there is a specific type that handles "missingness". 
-
-This type is called `NA` and will be a thorn in our sides.
-
-### Storing Missingness in a Variable
-
-There are `NA` values for many data types. However, all you will really need is `NA`.
-
-```{r}
-x = c(1, NA, 2, 3)
-x
-```
 
 ### Built-in constants
 
@@ -264,6 +244,24 @@ pi        # View new value
 
 Keep this in mind during later when we work on debugging code... 
 
+### Storing Missingness in a Variable
+
+> An NA is the presence of an absence. Don't forget that some missing values 
+> are the absence of a presence
+>
+> --- Hadley Wickham [twitter](https://twitter.com/hadleywickham/status/738802081448886272)
+
+Within R, there is a specific type that handles "missingness". 
+
+This type is called `NA` and will be a thorn in our sides.
+
+### Storing Missingness in a Variable
+
+There are `NA` values for many data types. However, all you will really need is `NA`.
+
+```{r}
+(x = NA)
+```
 
 # Data Structures
 
@@ -444,47 +442,28 @@ is.atomic(1:4)         # Checks for atomic vector
 
 ## Mixtures
 
-### Mixing Homogeneous Types
+### Coercion Associated with Mixing Homogeneous Types
 
 As hinted to earlier, it is not ideal to "mix" homogenous types. 
 
-Consider two atomic vectors: 
+Mixing types has _R_ coerces the data type to a shared type. Some common
+examples:
 
 ```{r}
-a = runif(5)      # Five random numbers in (0, 1)
-b = letters[1:5]  # First 5 letters of the alphabet
+c(1, 2L, "Toad") # Numeric/Integer + Character => Character
+c(3.14, 1L)      # Numeric + Integer           => Numeric
+c(2L, TRUE)      # Integer + Logical           => Integer
 ```
 
-The structure of these vectors are:
+### Controlled Coercion
+
+Explicitly coerce to another data type with `as.*()` functions. Examples:
 
 ```{r}
-str(a)            # View the structure of `a`
-
-str(b)            # View the structure of `b`
-```
-
-### Mixing Homogeneous Types
-
-If we merge them, we get:
-
-```{r}
-d = c(a, b)       # Concatenate `a` and `b`
-
-str(d)            # View the structure of `d`
-```
-
-**Note:** Merging `numeric` with `character` yields `character`
-
-### Converting Between Homogeneous Types
-
-Sometimes, you may have data that has been given to you in `character` form but
-really should be `numeric` and vice versa.
-
-To move between formats you can use:
-
-```{r}
-(x = c(TRUE, FALSE, FALSE, TRUE))
-as.numeric(x)
+as.numeric(c(TRUE, FALSE)) # Logical -> Numeric
+as.character(3.14)         # Numeric -> Character
+as.integer(3.14)           # Numeric -> Integer
+as.logical(c(1L, 0L))      # Integer -> Logical
 ```
 
 # Subset
@@ -616,16 +595,36 @@ Generally, the length of the vector is significantly longer than only `1` value.
 _R_ allows for operations to take place on these elements without having to individually
 access each element. This is called _vectorization_.
 
-### Sequence Operator and Arithmetic Operations
+### Sequence Operator
 
-Vectors have many convenient short cuts. 
+Vectors have many convenient short cuts. One of the main short cuts
+is the _Colon Operator_ or `from:to` which allows for the generation of an
+integer vector. 
+ 
+ `r x = 1:5` `x = 1:5` generates a vector of length `5` that 
+ contains $1,2,3, \ldots, 5$ and assigns it to `x`.
+    
 
-1. `x:y` operator allows for the generation of an integer vector. 
-    - `r x = 1:5` `x = 1:5` generates a vector of length `5` that contains $1,2,3, \ldots, 5$ and assigns it to `x`.
-2. `*x`,`/x`,`+x` operators allow the vector to be modified by a term. 
+### Vectorized Binary Operators
 
-### Sequence Operator and Arithmetic Operations
+| Operator | Operation Name                        |
+|:--------:|:-------------------------------------:|
+| `+`      | addition                              |
+| `-`      | subtraction                           |
+| `*`      | multiplication                        |
+| `/`      | division                              |
+| `^`      | exponentiation                        |
+| `%%`     | modulo arithmetic or the remainder    |
+| `%/%`    | integer division                      |
 
+- **Usage:** `x o y = z`
+- Operators allow the vectors to be modified by a term or another vector in
+  place.
+
+
+### Sequence Operator and Binary Operations
+
+\scriptsize
 ```{r}
 (x = 1:5)   # Define x
 
@@ -633,7 +632,7 @@ Vectors have many convenient short cuts.
 
 sqrt(y)     # Take the square root
 
-x + 1       # Add one to all values.
+x %% 2      # Modulos of 2
 
 2 * (x - 1) # Subtract one then multiply by 2
 ```
