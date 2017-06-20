@@ -34,7 +34,11 @@ Note: All homework is due on **Sunday** at **11:59 PM CDT** by e-mail to
                    
 # Week 2: Welcome to R
 
-- **6/19/17 - M:** 
+- **6/19/17 - M:** Data Types, Data Structures, and _Atomic_ Vectors
+    - Read [Data structures](http://adv-r.had.co.nz/Data-structures.html) and [Subsetting](http://adv-r.had.co.nz/Subsetting.html) in [Advanced R](http://adv-r.had.co.nz/)
+    - Additional Reading: 
+         * [Vectors](http://r4ds.had.co.nz/vectors.html) in [R for Data Science](http://r4ds.had.co.nz/)
+         * [Circle 3: Failing to Vectorize](http://www.burns-stat.com/pages/Tutor/R_inferno.pdf#page=17) in [R Inferno](http://www.burns-stat.com/pages/Tutor/R_inferno.pdf)
 - **6/20/17 - T:** 
     - **>> You must be in a group by now! <<**
 - **6/22/17 - R:** 
