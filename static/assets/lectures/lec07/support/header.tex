@@ -1,0 +1,75 @@
+%normal
+\usepackage{color}
+\usepackage{beamerthemebars}
+\usepackage{lmodern}
+\usepackage{multicol}
+\usepackage{booktabs}
+
+
+
+\usetheme{AnnArbor}
+\usecolortheme{wolverine}
+
+%redefined colors for beamer
+\definecolor{beamer@UIUCblue}{RGB}{0,60,125}
+\definecolor{beamer@UIUCorange}{RGB}{244,127,36}
+% taken from 
+% http://identitystandards.illinois.edu/graphicstandardsmanual/generalguidelines/colors.html
+
+\definecolor{beamer@UIUCgray}{RGB}{210,210,210}
+%warning text
+\definecolor{customgreen}{RGB}{2,103,1}
+
+\setbeamercolor{frametitle}{fg=beamer@UIUCblue,bg=beamer@UIUCgray}
+\setbeamercolor{normal text}{fg=black}
+\setbeamercolor{title}{fg=beamer@UIUCblue,bg=beamer@UIUCorange}
+\setbeamercolor{item projected}{fg=white,bg=beamer@UIUCorange}
+%boxes
+\setbeamercolor{block title}{fg=beamer@UIUCblue,bg=beamer@UIUCorange}
+\setbeamercolor{block body}{fg=blue,bg=beamer@UIUCblue!80}
+\setbeamercolor{title in head/foot}{fg=beamer@UIUCblue,bg=beamer@UIUCgray}
+\setbeamercolor{author in head/foot}{fg=white,bg=beamer@UIUCblue}
+\setbeamercolor{institute in head/foot}{fg=white,bg=beamer@UIUCorange}
+\setbeamercolor{date in head/foot}{fg=white,bg=beamer@UIUCorange}
+\setbeamercolor{section in head/foot}{fg=white,bg=beamer@UIUCblue}
+\setbeamercolor{subsection in head/foot}{fg=white,bg=beamer@UIUCorange}
+
+%override title link color
+\makeatletter
+\renewcommand\insertshorttitle[1][]{%
+  \beamer@setupshort{#1}%
+  \let\thanks=\@gobble%
+  \ifnum\c@page=1%
+  \hyperlinkpresentationend{\beamer@insertshort{\usebeamercolor*[fg]{title in head/foot}\beamer@shorttitle}}%
+  \else%
+  \hyperlinkpresentationstart{\beamer@insertshort{\usebeamercolor*[fg]{title in head/foot}\beamer@shorttitle}}%
+  \fi}
+\makeatother
+
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\beamer@section}
+  {\def\insertsectionhead{\hyperlink{Navigation\the\c@page}{#1}}}
+  {\def\insertsectionhead{\hyperlink{Navigation\the\c@page}{\usebeamercolor*[fg]{section in head/foot}#1}}}
+  {}{}
+\patchcmd{\beamer@subsection}
+  {\def\insertsubsectionhead{\hyperlink{Navigation\the\c@page}{#1}}}
+  {\def\insertsubsectionhead{\hyperlink{Navigation\the\c@page}{\usebeamercolor*[fg]{subsection in head/foot}#1}}}
+  {}{}
+\makeatother
+
+
+%\setbeamercolor{palette tertiary}{bg=beamer@UIUCblue,fg=white}
+%\setbeamercolor{palette secondary}{bg=beamer@UIUCgray,fg=white}
+%\setbeamercolor{palette primary}{bg=beamer@UIUCorange,fg=white}
+
+\beamertemplatenavigationsymbolsempty %hides navigation.
+\usepackage{graphicx}
+\usepackage{comment}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,urlcolor=beamer@UIUCblue,linkcolor=beamer@UIUCblue,% link color controls section, subsection, and title
+citecolor = beamer@UIUCorange,
+anchorcolor = beamer@UIUCorange}
+\usepackage{amssymb,amsmath}
+\usepackage{multirow}
+\usepackage{upgreek}

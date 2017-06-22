@@ -1,0 +1,36 @@
+\documentclass[convert={density=300,size=1080x800,outext=.png}]{standalone}
+
+\usepackage{tikz}
+\begin{document}
+      \def\firstduocircle{(0,0) circle (1.5cm)}%
+      \def\secondduocircle{(0:2cm) circle (1.5cm)}%
+      \colorlet{circle edge}{black}%
+      \colorlet{circle area}{cyan!50}%
+      \colorlet{circle area ans}{red!50}%
+      \tikzset{filled/.style={fill=circle area, draw=circle edge, thick},
+          ans/.style={fill=circle area ans, draw=circle edge, thick},
+          outline/.style={draw=circle edge, thick}, line/.style={draw=circle edge, thick}}%
+   
+      \begin{tikzpicture}
+          
+		  % Color the background / sample space blue
+		  \begin{scope}
+              \draw[filled] (-1.75,-2.50) rectangle (3.75,2.45) node [below left] {$S$};
+              \fill[white] \firstduocircle node [below, left] {$X$}
+                                       \secondduocircle node [below, right] {$Y$};
+          \end{scope}
+
+		  % Color only Y
+	      \begin{scope}
+	          \clip \secondduocircle;
+	          \draw[filled, even odd rule] \firstduocircle
+	                                       \secondduocircle node {$Y$};
+	      \end{scope}
+          \draw[outline] \firstduocircle node {$X$}
+                         \secondduocircle;
+          \draw[thick] (-1.75,-2.50) rectangle (3.75,2.45) node [below left] {$S$};
+          \draw[line] (-1.75,-3.25) -- (3.75,-3.25);
+          \node[text=red] at (1,-3) {$P(X^c)$ is the same as $!X$};
+      \end{tikzpicture}
+	 
+\end{document}

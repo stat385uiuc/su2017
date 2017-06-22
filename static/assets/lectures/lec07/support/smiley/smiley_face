@@ -1,0 +1,11 @@
+\documentclass[convert={density=300,size=1080x800,outext=.png}]{standalone}
+
+\usepackage{tikz}
+\usetikzlibrary{shapes.emoticon}
+\begin{document}
+
+\begin{tikzpicture}[ultra thick]
+  \node [shape=emoticon happy,draw,scale=8,fill=yellow]  {};
+\end{tikzpicture}
+   
+\end{document}    

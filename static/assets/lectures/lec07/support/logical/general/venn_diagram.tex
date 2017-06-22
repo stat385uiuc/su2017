@@ -1,0 +1,117 @@
+\documentclass[convert={density=300,size=1080x800,outext=.png}]{standalone}
+
+\usepackage{tikz}
+\begin{document}
+
+ \def\firsttriocircle{(0,0) circle (1.5cm)}%
+      \def\secondtriocircle{(45:2cm) circle (1.5cm)}%
+      \def\thirdtriocircle{(0:2cm) circle (1.5cm)}%
+      
+      \def\firstduocircle{(0,0) circle (1.5cm)}%
+      \def\secondduocircle{(0:2cm) circle (1.5cm)}%
+      
+      \colorlet{circle edge}{black}%
+      \colorlet{circle area}{cyan!50}%
+      \colorlet{circle area ans}{red!50}%
+      \tikzset{filled/.style={fill=circle area, draw=circle edge, thick},
+          ans/.style={fill=circle area ans, draw=circle edge, thick},
+          outline/.style={draw=circle edge, thick}, line/.style={draw=circle edge, thick}}%
+		  
+      \begin{tikzpicture}
+		  % Set B but not A
+
+          
+          \begin{scope}[shift={(0cm,0.75cm)}]
+		
+            \begin{scope}
+              \draw[filled] (-1.75,-2.50) rectangle (3.75,2.45) node [below left] {$S$};
+              \fill[white] \firstduocircle node [below, left] {$X$}
+                                       \secondduocircle node [below, right] {$Y$};
+            \end{scope}
+	        \begin{scope}
+	          \clip \secondduocircle;
+	          \draw[filled, even odd rule] \firstduocircle
+	                                       \secondduocircle;
+	        \end{scope}
+            \begin{scope}
+              \draw[line, even odd rule] \firstduocircle node [below, left] {$X$}
+                                       \secondduocircle node [below, right] {$Y$};
+            \end{scope}
+            \draw[thick] (-1.75,-2.50) rectangle (3.75,2.45) node [below left] {$S$};
+            \draw[line] (-1.75,-3.25) -- (3.75,-3.25);
+              \node[text=red] at (1,-3) {$X^c$ is the same as $!X$};
+          \end{scope}
+		  
+          \begin{scope}[shift={(7cm,.75cm)}]
+            \begin{scope}
+              \draw[white] (-1.75,-2.50) rectangle (3.75,2.45) node [below left] {$S$};
+              \fill[white] \firstduocircle node [below, left] {$X$}
+                                       \secondduocircle node [below, right] {$Y$};
+            \end{scope}
+			
+            \begin{scope}
+              \clip \firstduocircle;
+              \fill[filled] \secondduocircle;
+            \end{scope}
+			
+            \begin{scope}
+              \draw[line, even odd rule] \firstduocircle node [below, left] {$X$}
+                                       \secondduocircle node [below, right] {$Y$};
+            \end{scope}
+            \draw[thick] (-1.75,-2.50) rectangle (3.75,2.45) node [below left] {$S$};
+            \draw[line] (-1.75,-3.25) -- (3.75,-3.25);
+            \node[text=red] at (1,-3) {${X \cap Y}$ is the same as $X \&\& Y$};
+          \end{scope}
+          
+          \begin{scope}[shift={(0cm,-5.5cm)}]
+            \begin{scope}
+              %\clip \secondduocircle;
+              \draw[filled] \firstduocircle
+                                           \secondduocircle node {$Y$};
+            \end{scope}
+            \draw[outline] \firstduocircle node {$X$}
+                         \secondduocircle;
+            \draw[thick] (-1.75,-2.50) rectangle (3.75,2.45) node [below left] {$S$};
+            \draw[line] (-1.75,-3.25) -- (3.75,-3.25);
+              \node[text=red] at (1,-3) {$X \cup Y$ is the same as $X || Y$};
+          \end{scope}
+          
+          %C u (A n B)
+          \begin{scope}[shift={(7cm,-6.25cm)}]
+            %\fill[filled] (-1.75,-1.75) rectangle (3.75,3.2) node [below left];
+            \begin{scope}
+              \fill[white]\firsttriocircle;    %Color Circle A [left]
+              \fill[white] \secondtriocircle;%Color Circle B [above]
+              \fill[filled] \thirdtriocircle; %Color Circle C [right]
+            \end{scope}
+            %A n B
+            \begin{scope}
+              \clip \firsttriocircle;
+              \fill[filled] \secondtriocircle; 
+            \end{scope}
+            %B n C
+            \begin{scope}
+              \clip \secondtriocircle;
+              \fill[filled] \thirdtriocircle; 
+            \end{scope}
+            %A n C
+            \begin{scope}
+              \clip \firsttriocircle;
+              \fill[filled] \thirdtriocircle; 
+            \end{scope}
+            %A n B n C
+            \begin{scope}
+              \clip \firsttriocircle;
+              \clip \secondtriocircle;
+              \fill[filled] \thirdtriocircle; 
+            \end{scope}
+            \draw[outline] \firsttriocircle node[font=\bfseries, below left] {$A$}
+                           \secondtriocircle node [font=\bfseries, above left] {$B$}
+                           \thirdtriocircle node [font=\bfseries, below right] {$C$};
+            \draw[thick] (-1.75,-1.75) rectangle (3.75,3.2) node [below left] {$S$};
+            \draw[line] (-1.75,-2.5) -- (3.75,-2.5);
+                 \node[text=red] at (1,-2.25) {$C \cup \left( {A \cap B} \right)$};
+          \end{scope}
+      \end{tikzpicture}
+
+\end{document}

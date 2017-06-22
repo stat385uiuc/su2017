@@ -34,15 +34,21 @@ Note: All homework is due on **Sunday** at **11:59 PM CDT** by e-mail to
                    
 # Week 2: Welcome to R
 
-- **6/19/17 - M:** Data Types, Data Structures, and _Atomic_ Vectors
+- **6/19/17 - M:** [Data Types, Data Structures, and _Atomic_ Vectors](/data-types-data-structures-and-subsetting/)
     - Read [Data structures](http://adv-r.had.co.nz/Data-structures.html) and [Subsetting](http://adv-r.had.co.nz/Subsetting.html) in [Advanced R](http://adv-r.had.co.nz/)
     - Additional Reading: 
          * [Vectors](http://r4ds.had.co.nz/vectors.html) in [R for Data Science](http://r4ds.had.co.nz/)
          * [Circle 3: Failing to Vectorize](http://www.burns-stat.com/pages/Tutor/R_inferno.pdf#page=17) in [R Inferno](http://www.burns-stat.com/pages/Tutor/R_inferno.pdf)
-- **6/20/17 - T:** 
+- **6/20/17 - T:**
+    - Continuation of [Data Types, Data Structures, and _Atomic_ Vectors](/data-types-data-structures-and-subsetting/)
+    - [Forming and Working in Groups](/forming-and-working-in-groups/)
     - **>> You must be in a group by now! <<**
-- **6/22/17 - R:** 
-    
+- **6/22/17 - R:** Control Statements and Flow
+    - Read [Iteration](http://r4ds.had.co.nz/iteration.html) in [R for Data Science](http://r4ds.had.co.nz/)
+    - Read [Circle 2: Growing Objects](http://www.burns-stat.com/pages/Tutor/R_inferno.pdf#page=13)  in [R Inferno](http://www.burns-stat.com/pages/Tutor/R_inferno.pdf)
+
+- **6/25/17 - Su:** Homework 1 is due at 11:59 PM CDT!
+
 # Week 3: Advanced R
 
 - **6/26/17 - M:** 

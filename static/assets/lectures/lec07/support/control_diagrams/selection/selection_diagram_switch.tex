@@ -1,0 +1,91 @@
+\documentclass[convert={density=300,size=1080x800,outext=.png}]{standalone}
+
+\usepackage[latin1]{inputenc}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+
+
+\begin{document}
+\pagestyle{empty}%
+
+
+
+% Define block styles
+\tikzstyle{decision} = [diamond, draw, fill=orange!50, 
+    text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]%
+\tikzstyle{block} = [rectangle, draw, fill=cyan!50, 
+    text width=5em, text centered, rounded corners, minimum height=4em]%
+\tikzstyle{starter} = [rectangle, text width=5em, text centered, rounded corners, minimum height=4em]%
+\tikzstyle{end} = [circle, draw, text width=5em, text centered, rounded corners, fill=purple!50, minimum height=4em]%
+
+\tikzstyle{line} = [draw, -latex']%
+\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3cm,
+    minimum height=2em]%
+    
+\begin{tikzpicture}[node distance = 3cm, auto]
+    % Place nodes for sequential diagram
+    \node [starter] (init) {Selection};
+    \node [block, below of=init, node distance=2.25cm] (op) {Switch or if/elseif/else};
+    \node [decision, below of=op, node distance=3cm] (choice1) {Case 1 Condition};
+    \node [decision, below of=choice1, node distance=3cm] (choice2) {Case 2 Condition};
+    \node [decision, below of=choice2, node distance=3cm] (choice3) {Case 3 Condition};
+    %\node [starter, below of=choice3, node distance=1cm] (spacer_unsatisfied) {};
+
+   % \node [starter, below of=choice3, node distance=3cm] (choice3) {};
+
+    \node [block, below of=choice3, node distance=3cm] (default) {Unsatisfied Condition};
+
+    % Spacer
+    \node [starter, right of=choice1] (spacer_left1) {};
+    \node [starter, right of=choice2] (spacer_left2) {};
+    \node [starter, right of=choice3] (spacer_left3) {};
+    \node [starter, below of=default, node distance=2cm] (space_below) {};
+
+    % Case code
+    \node [block, right of=choice1, node distance=5cm] (case1) {Case 1 Code};
+    \node [block, right of=choice2, node distance=5cm] (case2) {Case 2 Code};
+    \node [block, right of=choice3, node distance=5cm] (case3) {Case 3 Code};
+
+    % A bit more space
+    \node [starter, right of=case1] (spacer_starter) {};
+    \node [starter, right of=case2] (spacer_starter2) {};
+    \node [starter, right of=case3] (spacer_starter3) {};
+    \node [end, right of=space_below, node distance=4cm] (stop) {Result};
+
+    \node [starter, below of=stop] (end_spacer) {};
+
+    % Top connections
+    \path [line] (init.south) --  (op.north);
+    \path [line] (op.south) --  (choice1.north);
+
+    % Branch paths
+    \path [line] (choice1.east) -- node  [near start] {True} (case1.west);
+    \path [line] (choice2.east) -- node [near start] {True} (case2.west);
+    \path [line] (choice3.east) -- node [near start] {True} (case3.west);
+
+
+    % Failure paths
+    \path [line] (choice1.south) -- (choice2.north);
+    \path [line] (choice2.south) --  (choice3.north);
+    \path [line] (choice3.south) -- node [near start] {False} (default.north);
+
+     % Connect to result
+     \path [line] (default.south) |- (stop);
+
+
+     \path [line] (spacer_starter.north) |- (stop);
+
+    % Draw line to broken curve
+     \path [line] (case1.east) -- (spacer_starter.center);
+     \path [line] (case2.east) -- (spacer_starter2.center);
+     \path [line] (case3.east) -- (spacer_starter3.center);
+
+     \path [line] (spacer_starter.north) |- (stop);
+
+    % end spacer
+     \path[line] (stop.south) -- (end_spacer.north);
+
+\end{tikzpicture}
+
+
+\end{document}

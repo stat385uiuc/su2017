@@ -1,0 +1,48 @@
+\documentclass[convert={density=300,size=1080x800,outext=.png}]{standalone}
+
+\usepackage[latin1]{inputenc}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+
+
+\begin{document}
+\pagestyle{empty}%
+
+
+
+% Define block styles
+\tikzstyle{decision} = [diamond, draw, fill=orange!50, 
+    text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]%
+\tikzstyle{block} = [rectangle, draw, fill=cyan!50, 
+    text width=5em, text centered, rounded corners, minimum height=4em]%
+\tikzstyle{starter} = [rectangle, text width=5em, text centered, rounded corners, minimum height=4em]%
+\tikzstyle{end} = [circle, draw, text width=5em, text centered, rounded corners, fill=purple!50, minimum height=4em]%
+
+\tikzstyle{line} = [draw, -latex']%
+\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3cm,
+    minimum height=2em]%
+    
+\begin{tikzpicture}[node distance = 2cm, auto]
+    % Place nodes for sequential diagram
+    \node [starter] (init) {Selection};
+    \node [decision, below of=init, node distance=2.25cm] (choice) {Choice};
+    \node [starter, left of=choice] (spacer_left) {};
+    \node [starter, right of=choice] (spacer_right) {};
+    \node [block, below of=spacer_left, node distance=2.25cm] (option1) {Statement};
+    \node [block, below of=spacer_right, node distance=2.25cm] (option2) {Statement};
+    \node [starter, below of=choice] (spacer) {};
+    \node [end, below of=spacer, node distance=2.25cm] (stop) {Result};
+    \node [starter, below of=stop, node distance=2.25cm] (end) {};
+	
+    % Draw edges
+    \path [line] (init) -- (choice);
+	
+    \path [line] (choice.west) -| node [above, near start] {T} (option1.north);
+    \path [line] (choice.east) -| node [near start] {F} (option2.north);
+    \path [line] (option1.south) |- (stop);
+    \path [line] (option2.south) |- (stop);
+	\path [line] (stop) -- (end);
+\end{tikzpicture}
+
+
+\end{document}

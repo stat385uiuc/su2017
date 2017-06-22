@@ -1,0 +1,36 @@
+\documentclass[convert={density=300,size=1080x800,outext=.png}]{standalone}
+
+\usepackage[latin1]{inputenc}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+
+
+\begin{document}
+\pagestyle{empty}%
+
+
+% Define block styles
+\tikzstyle{block} = [rectangle, draw, fill=cyan!50, 
+    text width=5em, text centered, rounded corners, minimum height=4em]%
+\tikzstyle{line} = [draw, -latex']%
+
+\tikzstyle{starter} = [rectangle, text width=5em, text centered, rounded corners, minimum height=4em]%
+\tikzstyle{ender} = [rectangle, text width=5em, text centered, rounded corners, minimum height=2em]%
+
+    
+\begin{tikzpicture}[node distance = 2cm, auto]
+    % Place nodes for sequential diagram
+    \node [starter] (start) {Sequential};
+    \node [block, below of=start, node distance=2.25cm] (step1) {Instruction};
+    \node [block, below of=step1] (step2) {Instruction};
+    \node [block, below of=step2] (step3) {Instruction};
+    \node [ender, below of=step3] (stop) {};
+    % Draw edges
+    \path [line] (start) -- (step1);
+    \path [line] (step1) -- (step2);
+    \path [line] (step2) -- (step3);
+    \path [line] (step3) -- (stop);
+\end{tikzpicture}
+
+
+\end{document}
