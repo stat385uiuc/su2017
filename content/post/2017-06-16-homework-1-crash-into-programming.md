@@ -26,7 +26,7 @@ the University’s rules on Academic Integrity. Rest assured, any violation of
 Academic Integrity will be punished **as severely as possible**.
 
 * Your assignment must be submitted through the e-mail to `balamut2` [at]
-  illinois [dot] edu. You are required to attach three (and only three) files to
+  illinois [dot] edu. You are required to attach two (and only two) files to
   the *same* e-mail:
     * The RMarkdown (`.Rmd`) file must be saved as `hw1_yourNetID.Rmd`,
       e.g.  `hw1_balamut2.Rmd`
