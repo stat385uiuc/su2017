@@ -1,0 +1,119 @@
+---
+title: "Example RStudio Document"
+author: "JJB + Course"
+date: "06/15/2017"
+---
+
+# Header Type 1
+
+We have text here. This text can easily be **markdown** 
+with bold or _italics_ (*italics* again).
+
+**Links Full:** <https://github.com/stat385uiuc/su2017>
+
+**Links Pretty:** [STAT 385@UIUC Summer 2017](https://github.com/stat385uiuc/su2017)
+
+
+**Picture (with caption):**
+
+![STAT Department Banner](http://www.stat.illinois.edu/images/header_image.jpg)
+
+
+**Picture (without caption):**
+
+![](https://www.graeters.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/b/l/blackraspberrycc-1.jpg)
+
+**Local picture file without caption:**  `![](images/header_image.jpg)`
+
+The above represents a directory that stores all images.
+
+Inline Code highlighting with `mean(x)`. 
+
+```{r calculate_mean, cache = TRUE}
+n = 25
+set.seed(11111)
+x = runif(n) # Generates 25 random numbers
+
+mean(x)
+```
+
+If you do not want code to run just use:
+
+```r
+mean(x)
+```
+
+Change language
+
+```{bash}
+echo $HOME
+```
+
+```bash
+echo $HOME
+```
+
+
+Unordered list
+
+- Toad
+- Banana
+- Chiken
+- Wurst
+
+Ordered list
+
+1. Mozart
+1. Kimchi and Chipotle
+1. Sleep
+
+Mixed List
+
+
+1. Who is your favorite composer?
+    - Mozart
+1. What is your favorite food?
+    - Kimchi and Chipotle
+1. What is your favorite activity? 
+    - Sleep
+
+Four spaces indicate the next level of the list.
+
+**Paragraph together (on one line):**
+
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
+
+**Paragraph (multiple lines without breaks):**
+
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+unknown printer took a galley of type and scrambled it to make a type specimen
+book.
+
+
+**Paragraph (multiple lines with breaks):**
+
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+
+Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+
+unknown printer took a galley of type and scrambled it to make a type specimen
+
+book.
+
+
+## Header Type 2
+
+### Header Type 3
+
+Try to structure the exercises like so:
+
+# Exercise 0
+
+1.
+1.
+
+# Exercise 1
+
+1.
+2.

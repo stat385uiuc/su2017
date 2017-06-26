@@ -26,11 +26,14 @@ _rmarkdown_ and _knitr_.
 Rendered Files:
 
 * [Lecture 3: Literate Programming (PDF)](/assets/lectures/lec03/lec03_literate_programming.pdf)
+* [Example Rmd Document (HTML)](/assets/lectures/lec03/example_rmd_document.html)
 
 Generation Files:
 
 * [Lecture 3: Literate Programming (Rmd)](/assets/lectures/lec03/lec03_literate_programming.Rmd)
 * [Lecture 3: Literate Programming (R)](/assets/lectures/lec03/r_lec03_literate_programming.R)
+* [Example Rmd Document (Rmd)](/assets/lectures/lec03/example_rmd_document.Rmd)
+* [Sample Bibliograph (bib)](/assets/lectures/lec03/mybib.bib)
 
 # Source Material
 
