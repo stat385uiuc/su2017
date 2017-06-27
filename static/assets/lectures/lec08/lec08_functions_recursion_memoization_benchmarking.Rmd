@@ -71,7 +71,7 @@ Functions are great because:
 1. The logic flow is chunked instead of a series of long statements
     - Also enables self-documenting depending on the function name. 
 1. Decrease the probability of an error
-    - Update the code in one central place instead of tracking multiple locations 
+    - Update code in one central location instead of all over. 
     - Easily reuse code across multiple analysis
     - No need to understand the internal computation.
 1. Easier to share code with people that you collaborate.
@@ -258,6 +258,8 @@ To do so, it is recommended that:
 1. You use **default parameter** containing the unmodified value.
 2. Make sure the function returns similar values.
 
+\scriptsize
+
 ```{r format_precent_sign, cache = T}
 format_percent = function(x, digits = 4, psign = TRUE){  
   percent = round(x * 100, digits = digits) 
@@ -272,18 +274,22 @@ format_percent = function(x, digits = 4, psign = TRUE){
 }
 ```
 
-## Dynamic Function Declaration and Call - Linear Regression
+## Case Study: Linear Regression Diagnostics
 
-Often, when working with linear regression, we want to compute three different summations to compute other useful diagnostic information:
+### Defining quantities $TSS$, $RSS$, and $FSS$
+
+Often, when working with linear regression, we want to compute three different 
+summations to compute other useful diagnostic information:
 
 - The Total Sum of Squares (TSS)
 $$TSS = \sum\limits_{i = 1}^n { { {\left( { {y_i} - { {\bar y}_i} } \right)}^2} }$$
-- Fitted Sum of Squares (FSS)
-$$FSS = \sum\limits_{i = 1}^n { { {\left( { { {\hat y}_i} - \bar y} \right)}^2} }$$
 - Residual Sum of Squares (RSS)
 $$RSS = \sum\limits_{i = 1}^n { { {\left( { {y_i} - \hat y} \right)}^2} }$$
 
-## Dynamic Function Declaration Example
+- Fitted Sum of Squares (FSS)
+$$FSS = \sum\limits_{i = 1}^n { { {\left( { { {\hat y}_i} - \bar y} \right)}^2} }$$
+
+### Dynamic Function Declaration: $TSS$, $RSS$, $FSS$ Example
 
 Converting these statements to a function yields:
 
@@ -292,16 +298,16 @@ compute_tss = function (y, y_bar)  {
   return(sum( (y - y_bar)^2 ))
 }
 
-compute_fss = function (y_hat, y_bar)  {
-  return(sum( (y_hat - y_bar)^2 ))
-}
-
 compute_rss = function (y, y_hat)  {
   return(sum( (y - y_hat)^2 ))
 }
+
+compute_fss = function (y_hat, y_bar)  {
+  return(sum( (y_hat - y_bar)^2 ))
+}
 ```
 
-### Dynamic Function Declaration and Call - Linear Regression
+### Exploiting a Relationship: $TSS$, $RSS$, $FSS$ Example
 
 These summations have the following relationship:
 
@@ -310,7 +316,7 @@ $$\begin{aligned}
 \sum\limits_{i = 1}^n { { {\left( { {y_i} - \bar y} \right)}^2} }  &= \sum\limits_{i = 1}^n { { {\left( { {y_i} - { {\hat y}_i} } \right)}^2} } + \sum\limits_{i = 1}^n { { {\left( { { {\hat y}_i} - \bar y} \right)}^2} } 
 \end{aligned}$$
 
-### Dynamic Function Declaration - Linear Regression
+### Reusing Functions: $TSS = RSS + FSS$ Relationship
 
 Exploiting the previously made functions with the aforementioned relationship, we get:
 
@@ -323,11 +329,8 @@ tss_relationship = function (y, y_hat, y_bar)  {
 }
 ```
 
-### Dynamic Function Call - Linear Regression
+### Creating Sample Data for Functions 
 
-**Setup Function Calls:**
-  
-\scriptsize
 ```{r data_setup, cache = TRUE}
 # Number of Observations
 n = 10
@@ -346,9 +349,7 @@ y_bar = mean(y)
 y_hat = lm(y~x)$fitted.values
 ```
 
-### Dynamic Function Call - Linear Regression
-
-**Call the functions:**
+### Call the functions
 
 ```{r computations, cache = T}
 # Compute
@@ -357,7 +358,7 @@ fss = compute_fss(y_hat, y_bar)
 tss = compute_tss(y, y_bar)
 tss_v2 = tss_relationship(y, y_hat, y_bar)
 
-# Verify equality
+# Verify relationship equality
 all.equal(tss, tss_v2)
 ```
 
@@ -398,7 +399,7 @@ multiple_constant = function(x) {
 multiple_constant(5)
 ```
 
-**Note:** This behavior can be very problematic. Try to keep your scope limited.
+**Note:** This behavior can be problematic. Try to keep your scope limited.
 
 ### Summary of Functions
 
@@ -951,7 +952,7 @@ ggplot(d, aes(N, Fibonacci)) + geom_line() + geom_point() +
   scale_x_continuous(labels = function (x) floor(x))
 ```
 
-### Example Memoization
+### Example External Memoization
 
 To memoize the Fibonacci function, we need to wrap place the function name in `memoise()`
 
@@ -982,7 +983,8 @@ system.time({mem_fib(35)}) # First time calculation
 
 ### Internal Memoization Cache
 
-To access the cache the in-between levels, you will need to declare the memoization function name within the function. e.g. 
+To access the cache the in-between levels, you will need to declare the 
+memoization function name within the function. e.g. 
 
 ```{r memized_fib_v2, cache = TRUE}
 internal_mem_fib = memoise(function(n) { 
@@ -997,7 +999,7 @@ internal_mem_fib = memoise(function(n) {
 
 ### Benchmarks
 
-When we write it this way, we gain speed due to the cache given by memoization being used. e.g.
+Internal memoization yields a higher speed gain compared to external.
 
 ```{r memoized_v2, cache = T}
 system.time({mem_fib(25)}) # Registers value in map
