@@ -65,11 +65,10 @@ to do a specific task within a script and generalize it so that it can be reused
 
 - Instead of writing a script that traverses the range of 1 to 100, please create
   a function that allows for a _dynamic_ _integer_ range to be set.
-- That is, the function should provide inputs for _integer_ starting and ending
-  numbers that have the appropriate default values given in the prompt.
-- Please add checks to ensure that the starting and ending numbers are of
-  type _integer_ and length 1.
-
+    - That is, the function should provide inputs for _integer_ starting and ending
+      numbers that have the appropriate default values given in the prompt.
+    - Please add checks to ensure that the starting and ending numbers are of
+      type _integer_ and length 1.
 
 # (2 Points) Exercise 3: An Ode to Protectionism
 
