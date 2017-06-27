@@ -23,10 +23,12 @@ host by [GitHub](http://github.com/).
 Rendered Files:
 
 * [Lecture 4: Version Control with git and GitHub (PDF)](/assets/lectures/lec04/lec04_version_control_with_git_and_github.pdf)
+* [`git` CLI Example (HTML)](/assets/lectures/lec04/git_cli_example.html)
 
 Generation Files:
 
 * [Lecture 4: Version Control with git and GitHub (Rmd)](/assets/lectures/lec04/lec04_version_control_with_git_and_github.Rmd)
+* [`git` CLI Example (Rmd)](/assets/lectures/lec04/git_cli_example.Rmd)
 
 # Source Material
 
