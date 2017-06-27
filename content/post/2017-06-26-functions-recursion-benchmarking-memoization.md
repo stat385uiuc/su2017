@@ -20,12 +20,12 @@ Today, we're going to explore the wonderful world of functions in *R*! As a resu
 
 Rendered Files:
 
-* [Lecture 3: Literate Programming (PDF)](/assets/lectures/lec08/lec08_functions_recursion_memoization_benchmarking.pdf)
+* [Lecture 8: Functions, Recursion, Benchmarking, and Memoization (PDF)](/assets/lectures/lec08/lec08_functions_recursion_memoization_benchmarking.pdf)
 
 Generation Files:
 
-* [Lecture 3: Literate Programming (Rmd)](/assets/lectures/lec08/lec08_functions_recursion_memoization_benchmarking.Rmd)
-* [Lecture 3: Literate Programming (R)](/assets/lectures/lec08/r_lec08_functions_recursion_memoization_benchmarking.R)
+* [Lecture 8: Functions, Recursion, Benchmarking, and Memoization (Rmd)](/assets/lectures/lec08/lec08_functions_recursion_memoization_benchmarking.Rmd)
+* [Lecture 8: Functions, Recursion, Benchmarking, and Memoization (R)](/assets/lectures/lec08/r_lec08_functions_recursion_memoization_benchmarking.R)
 
 # Source Material
 
