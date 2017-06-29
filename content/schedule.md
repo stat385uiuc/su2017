@@ -51,17 +51,28 @@ Note: All homework is due on **Sunday** at **11:59 PM CDT** by e-mail to
 
 # Week 3: Advanced R
 
-- **6/26/17 - M:** 
-- **6/27/17 - T:** 
-- **6/29/17 - R:** 
-  
-- **6/30/17 - F:** **>> Submit Group Proposal! <<**
+- **6/26/17 - M:** Functions, Recursion, Memoization, and Benchmarking
+    - Read [Functions](http://r4ds.had.co.nz/functions.html) in [R for Data Science](http://r4ds.had.co.nz/)
+    - Read [Performance chapter until "Language performance"](http://adv-r.had.co.nz/Performance.html) in [Advanced R](http://adv-r.had.co.nz/)
+    - Read [Memoization witin Functional Operators](http://adv-r.had.co.nz/Function-operators.html) in [Advanced R](http://adv-r.had.co.nz/)
+    - Read [Circle 5: Not Writing Functions](http://www.burns-stat.com/pages/Tutor/R_inferno.pdf#page=28)  in [R Inferno](http://www.burns-stat.com/pages/Tutor/R_inferno.pdf)
+- **6/27/17 - T:** Numerical Stability (A Study in Calculating Variance)
+    - Read [Debugging, condition handling, and defensive programming](http://adv-r.had.co.nz/Exceptions-Debugging.html) in [Advanced R](http://adv-r.had.co.nz/)
+    - Read [Circle 1: Falling into the Floating Point Trap](http://www.burns-stat.com/pages/Tutor/R_inferno.pdf#page=10)
+    - Read [Introduction to Circle 8: ](http://www.burns-stat.com/pages/Tutor/R_inferno.pdf#page=45) in [R Inferno](http://www.burns-stat.com/pages/Tutor/R_inferno.pdf)
+    - Create an account on [StackOverflow](http://stackoverflow.com) and look at the [R tag](http://stackoverflow.com/questions/tagged/r) questions. Can you answer some? Send me a tweet @axiomsofxyz if you do!
+- **6/29/17 - R:** Advanced Data Structures, Memory Usage and Profiling 
+    - Read [Profiling](http://adv-r.had.co.nz/Profiling.html) and [Memory](http://adv-r.had.co.nz/memory.html) in [Advanced R](http://adv-r.had.co.nz/)
+
+- **7/02/17 - Su:** Homework 2 is due at 11:59 PM CDT!
 
 # Week 4: Midterm
 
 - **7/03/17 - M:** 
 - **7/04/17 - T:** *No Class for Independence Day*
 - **7/06/17 - R:** *Midterm*
+
+- **7/07/17 - F:** **>> Submit Group Proposal! <<**
 
 [**Drop Deadline:** July 7th, 2017](https://registrar.illinois.edu/summer-academic-calendar-17)
 
@@ -71,13 +82,17 @@ Note: All homework is due on **Sunday** at **11:59 PM CDT** by e-mail to
 - **7/11/17 - T:** 
 - **7/13/17 - R:** 
 
+- **7/16/17 - Su:** Homework 3 is due at 11:59 PM CDT!
+
 # Week 6: Deploying
 
 - **7/17/17 - M:** 
 - **7/18/17 - T:** 
     - **>> Submit Group Progress Update! <<**
 - **7/20/17 - R:** 
-    
+
+- **7/23/17 - Su:** Homework 4 is due at 11:59 PM CDT!
+
 # Week 7: High Performance Computing
 
 - **7/24/17 - M:** 
@@ -90,7 +105,9 @@ Note: All homework is due on **Sunday** at **11:59 PM CDT** by e-mail to
 - **8/01/17 - T:** 
     - **Today is Group Presentation day!**
 - **8/02/17 - W:** Reading Day
+    - **Homework 5 is due at 11:59 PM CDT!**
 - **8/03/17 - R:** Final Exams+++ (in other courses so no class!)
+
 
 Final Reports are due on: **Sunday August 6th, 2017** at **11:59 PM CDT**
 Please attach your code and make sure I have access to the GitHub repository!
