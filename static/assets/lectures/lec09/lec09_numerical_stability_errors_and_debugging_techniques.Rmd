@@ -170,8 +170,6 @@ converting the `integer` to a `numeric` with precision:
 \[{\sigma ^2} = \frac{ {\sum\limits_{i = 1}^n {x_i^2}  - { {\left( {\sum\limits_{i = 1}^n { {x_i} } } \right)}^2}/n} }{n}\]
 
 
-
-
 ### Sum of Squares Manipulation for Naive version
 
 I'm opting to simply show the $S_{xx}$ modification instead of working 
@@ -199,11 +197,12 @@ $$\begin{aligned}
 ### Implementing Naive Variance
 
 ```{r var_algo_naive, cache = TRUE, echo = TRUE}
-var_naive = function(x){
+var_naive = function(x) {
   n = length(x)           # Obtain the length
   sum_x = 0               # Storage for Sum of X
   sum_x2 = 0              # Storage for Sum of X^2
-  for(i in seq_along(x)){ # Calculate sums
+  
+  for(i in seq_along(x)) {# Calculate sums
     sum_x = sum_x + x[i]
     sum_x2 = sum_x2 + x[i]^2
   }
@@ -214,30 +213,30 @@ var_naive = function(x){
 }
 ```
 
-## Implementing Two-Pass Variance
+### Implementing Two-Pass Variance
 
 ```{r var_algo_2p, cache = TRUE, echo = TRUE}
-var_2p = function(x){
+var_2p = function(x) {
   n  = length(x)           # Length
   mu = 0; v = 0            # Storage for mean and var
   
-  for(i in seq_along(x)){  # Calculate the Sum for Mean
+  for(i in seq_along(x)) { # Calculate the Sum for Mean
     mu = mu + x[i]         
   }
-  
   mu = mu / n              # Calculate the Mean
   
-  for(i in seq_along(x)){  # Calculate Sum for Variance
+  for(i in seq_along(x)) { # Calculate Sum for Variance
     v = v + (x[i] - mu)*(x[i] - mu)
   }
-  
   v = v/n                  # Calculate Variance
+  
   return(v)                # Return
 }
 ```
 
 ### Calculations
 
+\footnotesize
 ```{r example_break, cache = TRUE, echo = TRUE}
 set.seed(1234) # Set seed for reproducibility
 x = rnorm(2e6, mean = 1e20, sd = 1e12)
@@ -246,7 +245,6 @@ x = rnorm(2e6, mean = 1e20, sd = 1e12)
 (method2 = var_2p(x))
 (baser = var(x)*((2e6)-1)/(2e6))
 
-all.equal(method1, method2)
 all.equal(method2, baser)
 ```
 
@@ -271,7 +269,7 @@ limiting areas of computing is handling **numeric** or **float** data types.
 x = 0.1
 x = x + 0.05
 x
-if(x == 0.15){
+if(x == 0.15) {
   cat("x equals 0.15")
 } else { 
   cat("x is not equal to 0.15")
@@ -299,9 +297,9 @@ sprintf("%.20f", x)
 
 ### $\epsilon$ neighborhood 
 
-Specifically, we are hitting a machine tolerance fault given by an $\epsilon$ neighborhood.
+Rounding error exists due to tolerance fault given by an $\epsilon$ neighborhood.
 
-```{r epsilon_neighborhood, out.width = "250px", fig.retina = NULL, fig.align='center', echo = F, cache = T}
+```{r epsilon_neighborhood, out.width = "200px", fig.retina = NULL, fig.align='center', echo = F, cache = T}
 knitr::include_graphics("img/epsilon_neighborhood.png")
 ```
 
@@ -319,24 +317,33 @@ sprintf("%.15f", 1 + c(-1,1)*.Machine$double.eps)
 
 ### Discrete Solution Check
 
-To get around rounding error between two objects, we add a tolerance parameter to check whether the value is in the $\epsilon$ neighborhood or not.
+To get around rounding error between two objects, we add a tolerance parameter 
+to check whether the value is in the $\epsilon$ neighborhood or not.
 
 ```{r all_equal_example, cache = TRUE, echo = TRUE}
 all.equal(x, 0.15, tolerance = 1e-3)
 ```
 
+If we disable the $\epsilon$ neighborhood, we return to beginning with a problem:
+
+```{r all_equal_example2, cache = TRUE, echo = TRUE}
+all.equal(x, 0.15, tolerance = 0)
+```
+
 
 ### Discrete Solution Check
 
-Since `all.equal` may not strictly return `TRUE` or `FALSE`, it is highly advisable to wrap it in `isTRUE()`, e.g.
+Since `all.equal` may not strictly return `TRUE` or `FALSE`, it is highly 
+advisable to wrap it in `isTRUE()`, e.g.
 
 ```{r is_true_value, cache = TRUE, echo = TRUE}
 isTRUE(all.equal(x, 0.15))
 ```
 
 Thus, in an `if` statement, you would use:
+
 ```{r is_true_numeric, cache = TRUE, echo = TRUE}
-if(isTRUE(all.equal(x, 0.15))){
+if(isTRUE(all.equal(x, 0.15))) {
   cat("In threshold")
 } else {
   cat("Out of threshold")
@@ -349,25 +356,27 @@ if(isTRUE(all.equal(x, 0.15))){
 
 To magnify the issue consider a loop like so:
 
-```{r bad_loop_example, cache = TRUE, echo = TRUE, eval = FALSE}
-inc_value = 360L / 14L # Value to increment
+```r
+inc_value = 360 / 14   # Value to increment
 i = 0                  # Increment storage
-while(i != 360){       # Loop
+while(i != 360) {      # Loop
   i = i + inc_value    # Add values
 }
 ```
 
-After 14 iterations, the loop should complete, but it does *not*! In fact, this loop will go onto infinity.
+After 14 iterations, the loop should complete, but it does *not*! In fact, 
+this loop will go onto infinity.
 
 ### Good Loop
 
-To fix the looping issue, we opt to always stick with *integer*s as counters
+To fix the looping issue, we opt to always stick with `integer` values as
+counters
 
 ```{r good_loop_example, cache = TRUE, echo = TRUE}
 inc_value = 360 / 14 # Value
-i = 0L               # Integer
-o = 0                # Numeric
-while(i != 14L){
+i = 0L               # Loop Counter
+o = 0                # Result Variable
+while(i != 14L) {
   o = o + inc_value  # Sum
   i = i + 1L         # Increment loop
 }
@@ -377,8 +386,12 @@ i
 
 ### Summary
 
-- Statistics and Computer Science rely on each greatly in this Brave New World of Data Science.
-- When working with big numbers, understand that arithmetic overflow is a reality.
-- **Never, ever, ever** use a floating-point representation as an incrementor for a loop. 
-    - Always use an `integer` for an incrementor and then convert it to a `numeric` within a function.
+- Statistics and Computer Science rely on each other greatly in this 
+  _Brave New World_ of Data Science.
+- When working with big numbers, understand that **arithmetic overflow**
+  is a reality and must be accounted for.
+- **Never, ever, ever** use a floating-point representation as an incrementor 
+  for a loop. 
+    - Always use an `integer` for an incrementor and then convert it to 
+      a `numeric` within a function.
 - This topic **will** come up again when we switch to using `Rcpp`.
