@@ -97,7 +97,7 @@ to convert temperature between celcius and fahrenheit.
 
 1. Develop a function that converts fahrenheit to celcius given the definition
    of: 
-   \[f(x) = \frac{{5\left( {x - 32} \right)}}{9}\]
+   `$$f(x) = \frac{{5\left( {x - 32} \right)}}{9}$$`
 
 2. Now, create a function that does the inverse of the previous one. That is,
    write `\(f^{-1}(x)\)` which translates celcius to fahrenheit.
@@ -109,7 +109,7 @@ to convert temperature between celcius and fahrenheit.
 The tenets behind this exercise are to prepare you to create different 
 implementations and provide benchmarks for each implementation. 
 
-Recall the different Sum of Squares, (*RSS*, *FSS*, *TSS*) formulations presented in [Lecture 5](http://stat385.thecoatlessprofessor.com/assets/lectures/lec08/lec08_functions_recursion_memoization_benchmarking.pdf#page=21). 
+Recall the different Sum of Squares, (*RSS*, *FSS*, *TSS*) formulations presented in [Lecture 8](http://stat385.thecoatlessprofessor.com/assets/lectures/lec08/lec08_functions_recursion_memoization_benchmarking.pdf#page=21). 
 
 - Recreate the three sum of square functions given using loops **AND** recreate
   `tss_relationship` such that it uses these newly created functions.

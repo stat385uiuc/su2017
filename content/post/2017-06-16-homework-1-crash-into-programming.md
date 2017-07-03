@@ -231,7 +231,7 @@ arith_mean $1             # Function call
 
 15. How does the mean obtained by this function compare to the mean of the Uniform Distribution? 
    - You might need to look at [the Wikipedia entry for a
-     continuous uniform distribution](https://en.wikipedia.org/wiki/Uniform_distribution_(continuous)).
+     discrete uniform distribution](https://en.wikipedia.org/wiki/Discrete_uniform_distribution).
 16. Commit the file to the branch. Switch to the `master` branch and use
 
 ```bash
@@ -292,7 +292,11 @@ Calculate each element given by the following:
 1. ${\left( { - 1} \right)^{2*n} }$ from $n = 1$ to $n = 100$
 
 1. What is the pattern associated with these values?
-    - Please use either inline `$ math $` or display `$$ math block $$` to write your response. For math specific symbols, see [LaTeX/Mathematics](https://en.wikibooks.org/wiki/LaTeX/Mathematics). Generally, `$ a^2 + b^2 = c^2 $` gives $a^2 + b^2 = c^2$, which is inline, and `$$a^2 + b^2 = c^2$$` gives $$ a^2 + b^2 = c^2 $$, which is a display block.
+    - Please use either inline `$ math $` or display `$$ math block $$` to 
+       write your response. For math specific symbols, see [LaTeX/Mathematics](https://en.wikibooks.org/wiki/LaTeX/Mathematics). 
+       Generally, `$a^2 + b^2 = c^2$` gives $a^2 + b^2 = c^2$, which is inline, 
+       and `$$a^2 + b^2 = c^2$$` gives $$a^2 + b^2 = c^2$$, which is a
+       display block. Refer back to the Literate Programming lecture for more.
 
 Compute the summation of:
 
