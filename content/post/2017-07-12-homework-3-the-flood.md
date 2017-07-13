@@ -92,9 +92,9 @@ to R.
     5. export the data as a `.csv` and save a copy as a `.rda` using `save(obj, file="name.rda")`
 - The client has provided the following raw data files:
     - [`ship_data.dta`](/assets/hw/hw3/data/ship_data.dta)
-    - [`test_scores.sas7bdat`](/assets/hw/hw3/data/test_scores.sas7bdat)
+    - [`point_totals.sas7bdat`](/assets/hw/hw3/data/point_totals.sas7bdat)
     - [`child_data.sav`](/assets/hw/hw3/data/child_data.sav)
-    - [`GE2011InformationalRates102512_0.XLS`](/assets/hw/hw3/data/GE2011InformationalRates102512_0.XLS)
+    - [`ge2011info.xls`](/assets/hw/hw3/data/ge2011info.xls)
         - Remove the first row and set the second row as the column names.
     - [`flowers.rda`](/assets/hw/hw3/data/flowers.rda)
 - Please note: You are **not** allowed to modify the raw data files.
