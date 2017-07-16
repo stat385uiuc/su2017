@@ -1,4 +1,4 @@
----
+﻿---
 title: "Homework 3: The Flood"
 date: '2017-07-12'
 slug: homework-3-the-flood
@@ -194,14 +194,16 @@ regression function using _R_'s S3 system.
 
 The following formulae will be helpful:
 
-$$\begin{aligned}
-  { {\hat \beta }_0} &= \bar y - { {\hat \beta }_1}\bar x\\
-  { {\hat \beta }_1} &= \frac{ { {S_{xy} } } }{ { {S_{xx} } } }\\
-  { {\hat \sigma }^2} &= \frac{ {RSS} }{ {n - 2} }\\
-  {R^2} &= 1 - \frac{ {RSS} }{ {TSS} }\\ 
+$$
+\begin{aligned}
+  { {\hat \beta }_0} &= \bar y - { {\hat \beta }_1}\bar x \\
+  { {\hat \beta }_1} &= \frac{ { {S_{xy} } } }{ { {S_{xx} } } } \\
+  { {\hat \sigma }^2} &= \frac{ {RSS} }{ {n - 2} } \\
+  {R^2} &= 1 - \frac{ {RSS} }{ {TSS} } \\ 
   se\left( { { {\hat \beta }_0} } \right) &= \sqrt {\frac{ { { {\hat \sigma }^2}\sum\limits_{i = 1}^n {x_i^2} } }{ {n\sum\limits_{i = 1}^n {x_i^2}  - { {\left( {\sum\limits_{i = 1}^n { {x_i} } } \right)}^2} } } } \\
   se\left( { { {\hat \beta }_1} } \right) &= \sqrt {\frac{ { { {\hat \sigma }^2}n} }{ {n\sum\limits_{i = 1}^n {x_i^2}  - { {\left( {\sum\limits_{i = 1}^n { {x_i} } } \right)}^2} } } } \\ 
-\end{aligned}$$
+\end{aligned}
+$$
 
 - Create a `slr(x, ...)` generic function.
 
