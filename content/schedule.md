@@ -68,7 +68,7 @@ Note: All homework is due on **Sunday** at **11:59 PM CDT** by e-mail to
 
 # Week 4: Midterm
 
-- **7/03/17 - M:** 
+- **7/03/17 - M:** Continuation of Advanced Data Structures, Memory Usage and Profiling and Review for Midterm
 - **7/04/17 - T:** *No Class for Independence Day*
 - **7/06/17 - R:** *Midterm*
 
@@ -78,32 +78,40 @@ Note: All homework is due on **Sunday** at **11:59 PM CDT** by e-mail to
 
 # Week 5: Harnessing Knowledge
 
-- **7/10/17 - M:** 
-- **7/11/17 - T:** 
-- **7/13/17 - R:** 
+- **7/10/17 - M:** Data Management Techniques, Regular Expressions [(regex)](http://regexr.com/), Dates and Times
+    - Read [Strings](http://r4ds.had.co.nz/strings.html) and [Dates and Times](http://r4ds.had.co.nz/dates-and-times.html)  in [R for Data Science](http://r4ds.had.co.nz/)
+    - Read the [Tidy Data](https://www.jstatsoft.org/article/view/v059i10) paper in [Journal of Statistical Software](https://www.jstatsoft.org) by Hadley Wickham
+- **7/11/17 - T:** S3 Objects and Ellipses (A study in Linear Regression)
+    - Read [S3 section within OO-Field Guide](http://adv-r.had.co.nz/OO-essentials.html) in [Advanced R](http://adv-r.had.co.nz/)
+    - Read [Section 7.1 of Circle 7: Tripping on Object Orientation](http://www.burns-stat.com/pages/Tutor/R_inferno.pdf#page=39)  in [R Inferno](http://www.burns-stat.com/pages/Tutor/R_inferno.pdf)
+- **7/13/17 - R:** Pipes and Web Scrapping
+    - Read [Pipes](http://r4ds.had.co.nz/pipes.html) in [R for Data Science](http://r4ds.had.co.nz/)
+    - Read [SelectorGadget vignette](https://cran.r-project.org/web/packages/rvest/vignettes/selectorgadget.html) in [`rvest`](https://cran.r-project.org/web/packages/rvest)
 
-- **7/16/17 - Su:** Homework 3 is due at 11:59 PM CDT!
 
 # Week 6: Deploying
 
-- **7/17/17 - M:** 
-- **7/18/17 - T:** 
-    - **>> Submit Group Progress Update! <<**
-- **7/20/17 - R:** 
-
-- **7/23/17 - Su:** Homework 4 is due at 11:59 PM CDT!
+- **7/17/17 - M:** Exploratory Data Analysis (EDA) 
+    - Read [Exploratory Data Analysis (EDA)](http://r4ds.had.co.nz/exploratory-data-analysis-eda.html) and [Data Visualization](http://r4ds.had.co.nz/data-visualisation.html) in [R for Data Science](http://r4ds.had.co.nz/)
+- **7/18/17 - T:** Shiny
+    - **Homework 3 is due at 2:00 PM CDT!**
+- **7/20/17 - R:** Package Development (A study in contributing)
+    - Read [Package Structure](http://r-pkgs.had.co.nz/package.html), [Object Documentation](http://r-pkgs.had.co.nz/man.html) and [Testing](http://r-pkgs.had.co.nz/tests.html) in [R Packages](http://r-pkgs.had.co.nz/)
+- **7/21/17 - F:** **>> Submit Group Progress Update! <<**
 
 # Week 7: High Performance Computing
 
-- **7/24/17 - M:** 
-- **7/25/17 - T:** 
-- **7/27/17 - R:** 
+- **7/24/17 - M:** Welcome to Rcpp Country
+- **7/25/17 - T:** Parallel Computing with R
+    - **Homework 4 is due at 2:00 PM CDT!**
+- **7/27/17 - R:** Parallel Computing with Rcpp
 
 # Week 8: Cluster Work
 
-- **7/31/17 - M:** 
-- **8/01/17 - T:** 
-    - **Today is Group Presentation day!**
+- **7/31/17 - M:** Distributed Computing with the [Illinois Campus Cluster (ICC)](https://campuscluster.illinois.edu/user_info/doc/beginner.html) 
+    - Look at the [Beginner's Guide](https://campuscluster.illinois.edu/user_info/doc/beginner.html)
+    - Read [Working with R on a Cluster](http://thecoatlessprofessor.com/programming/working-with-r-on-a-cluster/)
+- **8/01/17 - T:** **Today is Group Presentation day!**
 - **8/02/17 - W:** Reading Day
     - **Homework 5 is due at 11:59 PM CDT!**
 - **8/03/17 - R:** Final Exams+++ (in other courses so no class!)
