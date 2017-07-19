@@ -48,7 +48,7 @@ or the grader.
 
 # Assignment Overview
 
-**Deadline: Sunday, August 2th by 2:00 PM CDT**
+**Deadline: Wednesday, August 2th by 2:00 PM CDT**
 
 ## Objectives
 
@@ -127,6 +127,10 @@ _R_ code.
 - Document all functions using `roxygen2`.
 
 ## (4 Points) Exercise 3: Computational Wizardry
+
+As a capstone to the course, the last exercise involves bringing your package
+onto a distributed computing environment and using it. This exercise will take
+_time_ as you are beholdent to the job scheduler. Make sure to start it early!
 
 - Deploy your package to the campus cluster following the guidelines here: <http://thecoatlessprofessor.com/programming/working-with-r-on-a-cluster/>
      - You will need to create a [Personal Access Token on GitHub](https://help.github.com/articles/creating-an-access-token-for-command-line-use/)
