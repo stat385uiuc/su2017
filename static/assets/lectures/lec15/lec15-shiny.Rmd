@@ -39,7 +39,7 @@ library("shiny")
 
 > [Shiny](http://shiny.rstudio.com/) is an R package that makes it easy to build interactive web applications (apps) straight from R.
 
-```{r movie_explorer, out.width = "250px", fig.retina = NULL, fig.align='center', cache = TRUE, echo = FALSE}
+```{r movie_explorer, out.width = "225px", fig.retina = NULL, fig.align='center', cache = TRUE, echo = FALSE}
 knitr::include_graphics("img/movie_explorer.png")
 ```
 
@@ -163,12 +163,12 @@ knitr::include_graphics("img/r_talks_to_web_browser.png")
 As hinted to earlier, there are two files responsible for the creation of the 
 shiny App: **ui.R** and **server.R**.
 
-- **ui.R:** is responsible for providing the _frontend_
- user interface (ui) for the shiny application.
+- **ui.R:** is responsible for providing the
+ user interface (ui) or _frontend_ for the shiny application.
 - **server.R:** is responsible for providing the _backend_ logic behind each 
  change that occurs due to a button click, slider drag, et cetera on the frontend.
 
-```{r backend_v_frontend, out.width = "250px", fig.retina = NULL, fig.align='center', cache = TRUE, echo = FALSE}
+```{r backend_v_frontend, out.width = "175px", fig.retina = NULL, fig.align='center', cache = TRUE, echo = FALSE}
 knitr::include_graphics("img/frontend_v_backend.jpg")
 ```
 
@@ -423,6 +423,23 @@ View **[Reactivity Explanation](https://vimeo.com/rstudioinc/review/131218530/21
 
 **Note:**  Reactive expressions return values, but observers don’t.
 
+### Accessing a Reactive Element
+
+Reactive elements can be found living in either the `input`, `output`, or `session` variables.
+The later of which is only found in Shiny Server Pro applications.
+
+To access a reactive source from the UI use name you gave to the component:
+
+```r
+input$name
+```
+
+So, to access to the data set choice, we would use: 
+
+```r
+input$ds
+```
+
 ### Creating a Reactive Catch
 
 **server.R**
@@ -446,21 +463,23 @@ shinyServer(function(input, output) {
 
 ### Observers In-depth
 
-Observers perform _actions_ when reactive values or expressions change.
+Observers perform _actions_ and do _not_ return values when either
+reactive values or expressions change.
 
 There are two forms of observers:
 
-- **Implicit**: Triggered whenever _any_ reactive values or expressions are encountered: 
+- **Implicit**: Triggered whenever _any_ reactive values or expressions changed
+  within the scope: 
 
 ```r
 observe({...})
 ```
 
-- **Explicit**: Triggered only when a specific reactive value or expression changes. 
-  Any other reactive values outside of the observed event are ignored. 
+- **Explicit**: Code is triggered only when a specific reactive value or expression changes. 
+  Any other reactive values outside of the **observed reactive event** are ignored. 
 
 ```r
-observeEvent(eventExpr, {...})
+observeEvent(observed_reactive_event, {...})
 ```
 
 ### Observers example
@@ -468,19 +487,36 @@ observeEvent(eventExpr, {...})
 ```r
 shinyServer(function(input, output) {
 
-  # Whenever input$x or input$y change, execute
+  # Whenever either input$x or input$y change, execute
   observe({
-    cat("input$x has", input$x, "and input$y has", input$y ,"\n")
+    cat("input$x has", input$x, 
+        "and input$y has", input$y ,"\n")
   })
   
-  # Execute only when form submission changes
-  observeEvent(input$submit_form, {
-    cat("input$x has", input$x, "and input$y has", input$y ,"\n")
+  # Execute only when form submission occurs
+  observeEvent(input$form_submission, {
+    cat("On form submit, we have: input$x with", input$x, 
+        "and input$y with", input$y ,"\n")
   })
 }
 ```
 
 ## Output Hooks
+
+
+### Creating Output Hooks
+
+Output hooks defined as: 
+
+```r
+output$view = renderTable({...})
+```
+
+serves as a recipe for what should be used when updating `view`. 
+
+Avoid making the mistake of interpreting the code as triggering the update to
+`view` with the results.
+
 
 ### Creating Output Hooks
 
@@ -501,21 +537,7 @@ shinyServer(function(input, output) {
 })
 ```
 
-### Creating Output Hooks
-
-Output hooks defined as: 
-
-```r
-output$view = renderTable({...})
-```
-
-serves as a recipe for what should be used when updating `view`. 
-
-Avoid making the mistake interpreting the code as triggering the update  `view` with
-the results.
-
 ### Creating Observer Hooks - Preview
-
 
 ```{r full_app, out.width = "250px", fig.retina = NULL, fig.align='center', cache = TRUE, echo = FALSE}
 knitr::include_graphics("img/full_app.png")
@@ -600,8 +622,8 @@ shinyServer(
   function(input, output) { 
     toad = "Hello"
     
-    output$test = renderUI({ # Many Times
-      
+    output$test = renderUI({ 
+                             # Many Times
     })
   }
 )
@@ -627,4 +649,5 @@ knitr::include_graphics("img/shiny_web_head.png")
 ### Acknowledgement
 
 This lecture goes into depth about the [Shiny More Widgets Example](http://shiny.rstudio.com/gallery/widgets.html)
-on [Shiny Gallery](http://shiny.rstudio.com/gallery/)
+on [Shiny Gallery](http://shiny.rstudio.com/gallery/) and discusses reactivity
+based on [Joe Cheng's "Ladder of Enlightenment" for Shiny](https://github.com/rstudio/ShinyDeveloperConference/tree/master/Reactivity).

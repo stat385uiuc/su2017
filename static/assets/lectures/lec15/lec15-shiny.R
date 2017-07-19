@@ -5,7 +5,7 @@ knitr::opts_chunk$set(echo = TRUE, cache = TRUE)
 ## ---- echo = F, message=F, cache = FALSE---------------------------------
 library("shiny")
 
-## ----movie_explorer, out.width = "250px", fig.retina = NULL, fig.align='center', cache = TRUE, echo = FALSE----
+## ----movie_explorer, out.width = "225px", fig.retina = NULL, fig.align='center', cache = TRUE, echo = FALSE----
 knitr::include_graphics("img/movie_explorer.png")
 
 ## ----hello_shiny, out.width = "250px", fig.retina = NULL, fig.align='center', cache = TRUE, echo = FALSE----
@@ -40,7 +40,7 @@ knitr::include_graphics("img/project/running_example.png")
 ## ----r_talks_to_web_browser, out.width = "250px", fig.retina = NULL, fig.align='center', cache = TRUE, echo = FALSE----
 knitr::include_graphics("img/r_talks_to_web_browser.png")
 
-## ----backend_v_frontend, out.width = "250px", fig.retina = NULL, fig.align='center', cache = TRUE, echo = FALSE----
+## ----backend_v_frontend, out.width = "175px", fig.retina = NULL, fig.align='center', cache = TRUE, echo = FALSE----
 knitr::include_graphics("img/frontend_v_backend.jpg")
 
 ## ----basic_ui, eval = F--------------------------------------------------
@@ -181,8 +181,8 @@ knitr::include_graphics("img/full_app.png")
 ##   function(input, output) {
 ##     toad = "Hello"
 ## 
-##     output$test = renderUI({ # Many Times
-## 
+##     output$test = renderUI({
+##                              # Many Times
 ##     })
 ##   }
 ## )
