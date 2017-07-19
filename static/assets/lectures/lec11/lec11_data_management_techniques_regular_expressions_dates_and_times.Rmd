@@ -551,8 +551,7 @@ Notes:
 
 ### Regex Backreferences
 
-- Regex has a nice feature that provides: **backreferences**
-- Definition: **Backreferences** enable the retrieval of values within side
+- **Backreferences** enable the retrieval of values within side
 the parantheses grouping option given by `()`. This is helpful when doing string
 replacement.
 - Each `()` group is assigned a number $n$ that can be referenced with `\\n`.
@@ -606,9 +605,11 @@ regex resources, but the color scheme is hard on the eyes.
 - Note, we will want to use the lower case alphabet to prevent capitalization 
 mismatches within alphabetical fields. (e.g. "harbor estates ln" $\ne$ "Harbor Estates Ln")
 
-## Extracting and Formatting
+### Extracting and Formatting
 
 **House_Address:** [#### Street Name] , [City], [State] [Zipcode]
+
+\scriptsize
 
 ```{r extract_format, eval = FALSE}
 # Create a temporary variable with strings in lower case
@@ -670,8 +671,8 @@ information in an analysis
 ```{r bad_time, eval = FALSE}
 # Bad Time Differencing:
 
-time1 = "2016-06-28 10:25:44 CDT" # UNIX Time Stamp
-time2 = "2016-06-28 15:25:44 CDT" # UNIX Time Stamp
+time1 = "2017-07-10 10:25:44 CDT" # UNIX Time Stamp
+time2 = "2017-07-10 15:25:44 CDT" # UNIX Time Stamp
 time2 - time1
 # Error in time2 - time1 : non-numeric argument to
 # binary operator
@@ -684,8 +685,8 @@ time2 - time1
 object in *R*.
 
 ```{r good_time}
-time1 = as.POSIXct("2016-06-28 10:25:44")
-time2 = as.POSIXct("2016-06-28 15:25:44") # +5 Hours
+time1 = as.POSIXct("2017-07-10 10:25:44")
+time2 = as.POSIXct("2017-07-10 15:25:44") # +5 Hours
 time2 - time1
 ```
 
@@ -743,13 +744,13 @@ For more, see `?strptime`
 ### Formating Non-Standard Dates
 
 ```{r}
-(yyyy_mm_dd = as.POSIXct("2016-06-28",
+(yyyy_mm_dd = as.POSIXct("2017-07-10",
                          format = "%Y-%m-%e"))
 
-(dd_mm_yy = as.POSIXct("28/06/16",
+(dd_mm_yy = as.POSIXct("10/07/17",
                        format = "%e/%m/%y"))
 
-(mon_dd_yyyy = as.POSIXct("Jun 28, 2016",
+(mon_dd_yyyy = as.POSIXct("Jul 07, 2017",
                          format = "%b %e, %Y"))
 ```
 
@@ -897,8 +898,8 @@ anytime(c("Mon Jul 10 10:11:12 2016", "Mon Jul 10 10:11:12.345678 2017"))
   
 ```{r example_lubridate, message=FALSE}
 library(lubridate)
-ymd("20160628")
-interval(mdy("06-28-2016"), dmy("29/06/2016"))
+ymd("20170710")
+interval(mdy("07-10-2017"), dmy("10/07/2017"))
 ```
 
 For more, please read the [Lubridate vignette](https://cran.r-project.org/web/packages/lubridate/vignettes/lubridate.html)
