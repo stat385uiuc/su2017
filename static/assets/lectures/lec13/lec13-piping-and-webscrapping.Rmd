@@ -1,5 +1,3 @@
-
-```{r }
 ---
 title: "Piping and Webscrapping"
 short-title: "Piping and Webscrapping"
