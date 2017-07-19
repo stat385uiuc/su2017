@@ -113,7 +113,7 @@ Note: All homework is due on **Sunday** at **11:59 PM CDT** by e-mail to
     - Read [Working with R on a Cluster](http://thecoatlessprofessor.com/programming/working-with-r-on-a-cluster/)
 - **8/01/17 - T:** **Today is Group Presentation day!**
 - **8/02/17 - W:** Reading Day
-    - **Homework 5 is due at 11:59 PM CDT!**
+    - **Homework 5 is due at 2:00 PM CDT!**
 - **8/03/17 - R:** Final Exams+++ (in other courses so no class!)
 
 
