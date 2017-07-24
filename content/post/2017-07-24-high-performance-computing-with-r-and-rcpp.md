@@ -23,7 +23,8 @@ performant code. To do so within *R*, we turn to using [Rcpp](http://rcpp.org).
 By Operating System:
 
 - [Rtools for Windows](http://thecoatlessprofessor.com/programming/rcpp/install-rtools-for-rcpp/)
-- [MacOS](http://thecoatlessprofessor.com/programming/r-compiler-tools-for-rcpp-on-os-x/)
+- [macOS (General Instructions)](http://thecoatlessprofessor.com/programming/r-compiler-tools-for-rcpp-on-os-x/)
+- [clang4 Binary Installer for macOS](https://uofi.box.com/v/r-macos-clang-pkg)
 - Linux: make sure to have `r-base-dev` installed.
 
 # Files of Interest 
