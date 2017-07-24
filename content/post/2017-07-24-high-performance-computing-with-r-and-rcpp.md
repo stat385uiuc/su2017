@@ -31,7 +31,7 @@ By Operating System:
 
 Rendered Files:
 
-* [Lecture 17: High Performance Computing and Rcpp (PDF)](/assets/lectures/lec15/lec15-high-performance-computing-and-rcpp.pdf)
+* [Lecture 17: High Performance Computing and Rcpp (PDF)](/assets/lectures/lec17/lec17-high-performance-computing-and-rcpp.pdf)
 
 Generation Files:
 
