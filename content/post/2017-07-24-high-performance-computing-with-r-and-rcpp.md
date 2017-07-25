@@ -1,7 +1,7 @@
 ---
 title: High Performance Computing with R and Rcpp
 author: ''
-date: '2017-07-24'
+date: '2017-07-25'
 slug: high-performance-computing-with-r-and-rcpp
 categories:
   - announcements
