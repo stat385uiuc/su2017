@@ -1,0 +1,30 @@
+\documentclass[convert={density=300,size=1080x800,outext=.png}]{standalone}
+
+\usepackage[latin1]{inputenc}
+\usepackage{tikz}
+
+\usetikzlibrary{shapes,arrows,calc,fit,positioning}
+
+\begin{document}
+\begin{tikzpicture}[
+  outer/.style={inner sep=10pt, text = white},
+  block/.style={rectangle, draw, fill=blue!20}
+  ]
+  \node[outer, fill = blue, minimum width = 10cm] (A) {Memory};
+  \node[outer, fill = orange, below=of A] (B) { Thread };
+  \node[outer, fill = orange, right=of B] (E) { Thread };
+  \node[outer, fill = orange, right=of E] (F) { Thread };
+  \node[outer, fill = orange, left=of B] (C) { Thread };
+  \node[outer, fill = orange, left=of C] (D) { Thread };
+  
+  \draw[thick,black!50,->] (B) -- (A);
+
+  \draw[thick,black!50,->] (D) -- (A);
+  \draw[thick,black!50,->] (C) -- (A);
+
+  \draw[thick,black!50,->] (E) -- (A);
+  \draw[thick,black!50,->] (F) -- (A);
+
+  
+\end{tikzpicture}
+\end{document}

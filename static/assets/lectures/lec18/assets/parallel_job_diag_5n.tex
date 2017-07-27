@@ -1,0 +1,15 @@
+\documentclass[convert={density=300,size=1080x800,outext=.png}]{standalone}
+
+\usepackage[latin1]{inputenc}
+\usepackage{tipa,tikz,tikz-qtree,tikz-qtree-compat}
+
+\begin{document}
+
+\begin{tikzpicture}[baseline]
+\Tree [.{Job 1} [.{Part 1} ] [.{Part 2} ] [.{Part 3} ] [.{Part 4} ] [.{Part 5} ]] 
+\end{tikzpicture}
+\begin{tikzpicture}[baseline]
+\Tree [.{Job 2} [.{Part 6} ] [.{Part 7} ] [.{Part 8} ] [.{Part 9} ] [.{Part 10} ]]
+\end{tikzpicture}
+
+\end{document}

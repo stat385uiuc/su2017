@@ -1,0 +1,67 @@
+\documentclass[convert={density=300,size=1080x800,outext=.png}]{standalone}
+
+\usepackage[latin1]{inputenc}
+\usepackage{tikz}
+
+\usetikzlibrary{shapes,arrows,calc,fit,positioning}
+
+\begin{document}
+\begin{tikzpicture}[remember picture,
+  tasks/.style={circle,thick,inner sep=3pt, node distance = 1pt,text opacity=0},
+  outer/.style={inner sep=10pt},
+  block/.style={rectangle, draw, fill=blue!20}
+  ]
+  \node[outer] (A) {
+    \begin{tikzpicture}
+      \node [tasks,fill=orange] (ai)  {A1};
+      \node [tasks,fill=black,right=of ai] (aii) {A2};
+      \node [tasks,fill=red,node distance = .35cm,below=of $(ai)!0.5!(aii)$] (aiii) {A3};
+      \node [tasks,fill=yellow,right=of aiii] (aiv) {A4};
+      \node [tasks,fill=green,left=of aiii] (av) {A5};
+      \node [tasks,fill=purple,node distance = .35cm,below=of $(av)!0.5!(aiii)$] (avi) {A6};
+      \node [tasks,fill=blue,right=of avi] (avii) {A7};
+    \end{tikzpicture}
+  };
+  \node[outer,fill=blue!20,right=of A] (B) {
+    \begin{tikzpicture}
+      \node [tasks,fill=orange] (bi)  {B1};
+      \node [tasks,fill=black,below=of bi] (bii) {B2};
+      \node [tasks,fill=red,below=of bii] (biii) {B3};
+      \node [tasks,fill=yellow,below=of biii] (biv) {B4};
+      \node [tasks,fill=green,below=of biv] (bv) {B5};
+      \node [tasks,fill=purple,below=of bv] (bvi) {B6};
+      \node [tasks,fill=blue,below=of bvi] (bvii) {B7};
+    \end{tikzpicture}
+  };
+  \node[outer,right=of B] (A2) {
+    \begin{tikzpicture}
+      \node [tasks,fill=blue] (ai2)  {A1};
+      \node [tasks,fill=purple,right=of ai2] (aii2) {A2};
+      \node [tasks,fill=yellow,node distance = .35cm,below=of $(ai2)!0.5!(aii2)$] (aiii2) {A3};
+      \node [tasks,fill=orange,right=of aiii2] (aiv2) {A4};
+      \node [tasks,fill=black,left=of aiii2] (av2) {A5};
+      \node [tasks,fill=red,node distance = .35cm,below=of $(av2)!0.5!(aiii2)$] (avi2) {A6};
+      \node [tasks,fill=green,right=of avi2] (avii2) {A7};
+    \end{tikzpicture}
+  };
+  
+  \draw[thick,black!50,->] (av.west) -- (A.east);
+  \draw[thick,black!50,->] (A.east) -- (bi);
+  \draw[thick,black!50,->] (A.east) -- (bii);
+  \draw[thick,black!50,->] (A.east) -- (biii);
+  \draw[thick,black!50,->] (A.east) -- (biv);
+  \draw[thick,black!50,->] (A.east) -- (bv);
+  \draw[thick,black!50,->] (A.east) -- (bvi);
+  \draw[thick,black!50,->] (A.east) -- (bvii);
+  
+  \draw[thick,black!50,->] (bi) -- (A2.west);
+  \draw[thick,black!50,->] (bii) -- (A2.west);
+  \draw[thick,black!50,->] (biii) -- (A2.west);
+  \draw[thick,black!50,->] (biv) -- (A2.west);
+  \draw[thick,black!50,->] (bv) -- (A2.west);
+  \draw[thick,black!50,->] (bvi) -- (A2.west);
+  \draw[thick,black!50,->] (bvii) -- (A2.west);
+  
+  \draw[thick,black!50,->] (A2.west) -- (aiv2.east);
+\end{tikzpicture}
+\end{document}

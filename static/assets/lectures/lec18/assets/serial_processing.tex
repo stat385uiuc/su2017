@@ -1,0 +1,54 @@
+\documentclass[convert={density=300,size=1080x800,outext=.png}]{standalone}
+
+\usepackage[latin1]{inputenc}
+\usepackage{tikz}
+
+\usetikzlibrary{shapes,arrows,calc,fit,positioning}
+
+\begin{document}
+	
+\begin{tikzpicture}[
+  remember picture,
+  tasks/.style={circle,thick,inner sep=3pt, fill=black, node distance = 1pt},
+  outer/.style={inner sep=5pt},
+  block/.style={rectangle, draw, fill=blue!20}
+  ]
+  \node[outer] (A) {
+    \begin{tikzpicture}
+      \node [tasks] (ai)  {A1};
+      \node [tasks,right=of ai] (aii) {A2};
+      \node [tasks,node distance = .35cm,below=of $(ai)!0.5!(aii)$] (aiii) {A3};
+      \node [tasks,right=of aiii] (aiv) {A4};
+      \node [tasks,left=of aiii] (av) {A5};
+      \node [tasks,node distance = .35cm,below=of $(av)!0.5!(aiii)$] (avi) {A6};
+      \node [tasks,right=of avi] (avii) {A7};
+    \end{tikzpicture}
+  };
+  \node[outer,fill=red,right=of A] (B) {
+    \begin{tikzpicture}
+      \node [tasks] (bi)  {B1};
+      \node [tasks,right=of bi] (bii) {B2};
+      \node [tasks,right=of bii] (biii) {B3};
+      \node [tasks,right=of biii] (biv) {B4};
+      \node [tasks,right=of biv] (bv) {B5};
+      \node [tasks,right=of bv] (bvi) {B6};
+      \node [tasks,right=of bvi] (bvii) {B7};
+    \end{tikzpicture}
+  };
+  \node[outer,right=of B] (A2) {
+    \begin{tikzpicture}
+      \node [tasks] (ai2)  {A1};
+      \node [tasks,right=of ai2] (aii2) {A2};
+      \node [tasks,node distance = .35cm,below=of $(ai2)!0.5!(aii2)$] (aiii2) {A3};
+      \node [tasks,right=of aiii2] (aiv2) {A4};
+      \node [tasks,left=of aiii2] (av2) {A5};
+      \node [tasks,node distance = .35cm,below=of $(av2)!0.5!(aiii2)$] (avi2) {A6};
+      \node [tasks,right=of avi2] (avii2) {A7};
+    \end{tikzpicture}
+  };
+  \draw[thick,black!50,->] (av.west) -- (aiv2.east);
+  \draw[thick,black!50,->] (A.east) -- (B.west);
+  \draw[thick,black!50,->] (B.east) -- (av2.west);
+\end{tikzpicture}
+
+\end{document}
